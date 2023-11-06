@@ -6,6 +6,8 @@
 \usage{
 MTS(
   obj,
+  start_input = NULL,
+  frequency_input = NULL,
   n_hidden_features = 5L,
   activation_name = "relu",
   a = 0.01,
@@ -16,9 +18,13 @@ MTS(
   n_clusters = 2L,
   cluster_encode = TRUE,
   type_clust = "kmeans",
-  seed = 123L,
   lags = 1L,
-  backend = c("cpu", "gpu", "tpu")
+  replications = NULL,
+  kernel = NULL,
+  agg = "mean",
+  seed = 123L,
+  backend = c("cpu", "gpu", "tpu"),
+  verbose = 0
 )
 }
 \description{

@@ -5,21 +5,29 @@ sklearn <- NULL
 .onLoad <- function(libname, pkgname) {
   utils::install.packages("reticulate",
                           repos = list(CRAN = "https://cloud.r-project.org"))
-  # try(reticulate::virtualenv_create('./r-reticulate'),
-  #     silent = TRUE)
-  # try(reticulate::use_virtualenv('./r-reticulate'),
-  #     silent = TRUE)
-  try(reticulate::py_install(
-    "scikit-learn",
-    #envname = "r-reticulate",
-    pip = TRUE,
-    pip_options = "--upgrade",
-    pip_ignore_installed = TRUE
-  ),
-  silent = TRUE)
+  try(reticulate::virtualenv_create('./r-reticulate'),
+      silent = TRUE)
+  try(reticulate::use_virtualenv('./r-reticulate'),
+      silent = TRUE)
+  try(reticulate::py_install("numpy",
+                             envname = "./r-reticulate",
+                             pip = TRUE),
+      silent = TRUE)
+  try(reticulate::py_install("pandas",
+                             envname = "./r-reticulate",
+                             pip = TRUE),
+      silent = TRUE)
+  try(reticulate::py_install("scipy",
+                             envname = "./r-reticulate",
+                             pip = TRUE,),
+      silent = TRUE)
+  try(reticulate::py_install("scikit-learn",
+                             envname = "./r-reticulate",
+                             pip = TRUE),
+      silent = TRUE)
   try(reticulate::py_install(
     "nnetsauce",
-    #envname = "r-reticulate",
+    envname = "./r-reticulate",
     pip = TRUE,
     pip_options = "--upgrade",
     pip_ignore_installed = TRUE

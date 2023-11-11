@@ -54,3 +54,4 @@ rsconnect/
 # Other folders
 .Rbuildignore
 .Rprofile
+r-reticulate/

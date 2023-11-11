@@ -2,9 +2,9 @@
 
 **Randomized and quasi-randomized nnetworks for supervised learning and multivariate time series forecasting**
 
-This is the R version of Python's [Techtonique/nnetsauce](https://github.com/Techtonique/nnetsauce). See [these posts](https://thierrymoudiki.github.io/blog/#QuasiRandomizedNN) for more details.
+This is the `R` version of Python's [Techtonique/nnetsauce](https://github.com/Techtonique/nnetsauce). See [these posts](https://thierrymoudiki.github.io/blog/#QuasiRandomizedNN) for more details.
 
-Currently, it's been tested only on Linux. Windows users can envisage using the [Windows Subsystems for Linux](https://learn.microsoft.com/en-us/windows/wsl/install).
+If you encounter errors on Windows, envisage using the [Windows Subsystems for Linux](https://learn.microsoft.com/en-us/windows/wsl/install).
 
 ## Install 
 

@@ -13,7 +13,7 @@
 #' @param random_state reproducibility seed
 #' @param classifiers specify classifiers to be adjusted (default is 'all')
 #' @param preprocess preprocessing input covariates (default is FALSE \code{FALSE})
-#' @param ... additional parameters to be passed to \code{\link{CustomClassifier}}
+#' @param ... additional parameters to be passed to \code{\link{nnetsauce::CustomClassifier}}
 #'
 #' @return
 #' @export
@@ -35,7 +35,7 @@
 #' y_test <- y[-index_train]
 #'
 #' obj <- LazyClassifier()
-#' res <- obj$fit(X_train, y_train)
+#' res <- obj$fit(X_train, X_test, y_train, y_test)
 #' print(res[[1]])
 #'
 LazyClassifier <- function(verbose = 0,
@@ -70,17 +70,17 @@ LazyClassifier <- function(verbose = 0,
 #' @param random_state reproducibility seed
 #' @param regressors specify regressors to be adjusted (default is 'all')
 #' @param preprocess preprocessing input covariates (default is FALSE \code{FALSE})
-#' @param ... additional parameters to be passed to \code{\link{CustomRegressor}}
+#' @param ... additional parameters to be passed to \code{\link{nnetsauce::CustomRegressor}}
 #'
 #' @return
 #' @export
 #'
 #' @examples
-#' set.seed(123)
-#' n <- 50 ; p <- 3
-#' X <- matrix(rnorm(n * p), n, p) # no intercept!
-#' y <- rnorm(n)
 #'
+#' X <- MASS::Boston[,-14] # dataset has an ethical problem
+#' y <- MASS::Boston$medv
+#'
+#' set.seed(13)
 #' (index_train <- base::sample.int(n = nrow(X),
 #'                                  size = floor(0.8*nrow(X)),
 #'                                  replace = FALSE))
@@ -89,9 +89,10 @@ LazyClassifier <- function(verbose = 0,
 #' X_test <- X[-index_train, ]
 #' y_test <- y[-index_train]
 #'
-#' obj <- LazyRegressor(obj)
-#' res <- obj$fit(X_train, y_train)
+#' obj <- LazyRegressor()
+#' res <- obj$fit(X_train, X_test, y_train, y_test)
 #' print(res[[1]])
+#'
 #'
 LazyRegressor <- function(verbose = 0,
                           ignore_warnings = TRUE,
@@ -125,7 +126,7 @@ LazyRegressor <- function(verbose = 0,
 #' @param random_state reproducibility seed
 #' @param regressors specify regressors to be adjusted (default is 'all')
 #' @param preprocess preprocessing input covariates (default is FALSE \code{FALSE})
-#' @param ... additional parameters to be passed to \code{\link{CustomRegressor}}
+#' @param ... additional parameters to be passed to \code{\link{nnetsauce::CustomRegressor}}
 #'
 #' @return
 #' @export
@@ -135,10 +136,15 @@ LazyRegressor <- function(verbose = 0,
 #' set.seed(123)
 #' X <- matrix(rnorm(300), 100, 3)
 #'
-#' obj <- sklearn$linear_model$BayesianRidge()
-#' obj2 <- LazyMTS(obj)
+#' (index_train <- base::sample.int(n = nrow(X),
+#'                                  size = floor(0.8*nrow(X)),
+#'                                  replace = FALSE))
+#' X_train <- data.frame(X[index_train, ])
+#' X_test <- data.frame(X[-index_train, ])
 #'
-#' res <- obj2$fit(X)
+#' obj <- LazyMTS()
+#'
+#' res <- obj$fit(X_train, X_test)
 #' print(res[[1]])
 #'
 LazyMTS <- function(verbose = 0,

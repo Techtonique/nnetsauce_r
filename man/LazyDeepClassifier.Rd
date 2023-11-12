@@ -12,7 +12,6 @@ LazyDeepClassifier(
   predictions = FALSE,
   random_state = 42L,
   classifiers = "all",
-  preprocess = FALSE,
   ...
 )
 }
@@ -30,8 +29,6 @@ LazyDeepClassifier(
 \item{random_state}{reproducibility seed}
 
 \item{classifiers}{specify classifiers to be adjusted (default is 'all')}
-
-\item{preprocess}{preprocessing input covariates (default is FALSE \code{FALSE})}
 
 \item{...}{additional parameters to be passed to \code{\link{nnetsauce::CustomClassifier}}}
 }

@@ -12,7 +12,6 @@ LazyDeepRegressor(
   predictions = FALSE,
   random_state = 42L,
   regressors = "all",
-  preprocess = FALSE,
   ...
 )
 }
@@ -30,8 +29,6 @@ LazyDeepRegressor(
 \item{random_state}{reproducibility seed}
 
 \item{regressors}{specify regressors to be adjusted (default is 'all')}
-
-\item{preprocess}{preprocessing input covariates (default is FALSE \code{FALSE})}
 
 \item{...}{additional parameters to be passed to \code{\link{nnetsauce::CustomRegressor}}}
 }
@@ -52,7 +49,7 @@ y_train <- y[index_train]
 X_test <- X[-index_train, ]
 y_test <- y[-index_train]
 
-obj <- LazyDeepRegressor(n_layers = 3L)
+obj <- LazyDeepRegressor(n_layers = 3L, n_clusters=2L)
 res <- obj$fit(X_train, X_test, y_train, y_test)
 print(res[[1]])
 

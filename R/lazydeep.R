@@ -3,6 +3,7 @@
 
 
 
+
 # 1 - Classifiers ---------------------------------------------------------
 
 #' Automated Machine Learning for deep classification models
@@ -49,7 +50,7 @@ LazyDeepClassifier <- function(n_layers = 3L,
                                ...)
 {
   ns$LazyDeepClassifier(
-    n_layers = floor(n_layers),
+    n_layers = n_layers,
     verbose = verbose,
     ignore_warnings = ignore_warnings,
     custom_metric = custom_metric,
@@ -90,7 +91,7 @@ LazyDeepClassifier <- function(n_layers = 3L,
 #' X_test <- X[-index_train, ]
 #' y_test <- y[-index_train]
 #'
-#' obj <- LazyDeepRegressor(n_layers = 3L)
+#' obj <- LazyDeepRegressor(n_layers = 3L, n_clusters=2L)
 #' res <- obj$fit(X_train, X_test, y_train, y_test)
 #' print(res[[1]])
 #'
@@ -105,7 +106,7 @@ LazyDeepRegressor <- function(n_layers = 3L,
                               ...)
 {
   ns$LazyDeepRegressor(
-    n_layers = floor(n_layers),
+    n_layers = n_layers,
     verbose = verbose,
     ignore_warnings = ignore_warnings,
     custom_metric = custom_metric,

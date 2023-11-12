@@ -14,7 +14,6 @@
 #' @param predictions obtain predictions (default is \code{FALSE})
 #' @param random_state reproducibility seed
 #' @param classifiers specify classifiers to be adjusted (default is 'all')
-#' @param preprocess preprocessing input covariates (default is FALSE \code{FALSE})
 #' @param ... additional parameters to be passed to \code{\link{nnetsauce::CustomClassifier}}
 #'
 #' @return
@@ -47,7 +46,6 @@ LazyDeepClassifier <- function(n_layers = 3L,
                                predictions = FALSE,
                                random_state = 42L,
                                classifiers = "all",
-                               preprocess = FALSE,
                                ...)
 {
   ns$LazyDeepClassifier(
@@ -58,7 +56,6 @@ LazyDeepClassifier <- function(n_layers = 3L,
     predictions = predictions,
     random_state = random_state,
     classifiers = classifiers,
-    preprocess = preprocess,
     ...
   )
 }
@@ -74,7 +71,6 @@ LazyDeepClassifier <- function(n_layers = 3L,
 #' @param predictions obtain predictions (default is \code{FALSE})
 #' @param random_state reproducibility seed
 #' @param regressors specify regressors to be adjusted (default is 'all')
-#' @param preprocess preprocessing input covariates (default is FALSE \code{FALSE})
 #' @param ... additional parameters to be passed to \code{\link{nnetsauce::CustomRegressor}}
 #'
 #' @return
@@ -106,7 +102,6 @@ LazyDeepRegressor <- function(n_layers = 3L,
                               predictions = FALSE,
                               random_state = 42L,
                               regressors = "all",
-                              preprocess = FALSE,
                               ...)
 {
   ns$LazyDeepRegressor(
@@ -117,7 +112,6 @@ LazyDeepRegressor <- function(n_layers = 3L,
     predictions = predictions,
     random_state = random_state,
     regressors = regressors,
-    preprocess = preprocess,
     ...
   )
 }

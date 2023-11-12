@@ -5,8 +5,9 @@
 
 # 1 - Classifiers ---------------------------------------------------------
 
-#' Automated Machine Learning for classification models
+#' Automated Machine Learning for deep classification models
 #'
+#' @param n_layers number of hidden layers
 #' @param verbose monitor progress (\code{0}, default, is false and \code{1} is true)
 #' @param ignore_warnings print trace when model fitting failed
 #' @param custom_metric defining a custom metric (default is \code{NULL})
@@ -50,7 +51,7 @@ LazyDeepClassifier <- function(n_layers = 3L,
                                ...)
 {
   ns$LazyDeepClassifier(
-    n_layers = n_layers,
+    n_layers = floor(n_layers),
     verbose = verbose,
     ignore_warnings = ignore_warnings,
     custom_metric = custom_metric,
@@ -64,8 +65,9 @@ LazyDeepClassifier <- function(n_layers = 3L,
 
 # 2 - Regressors ---------------------------------------------------------
 
-#' Automated Machine Learning for regression models
+#' Automated Machine Learning for deep regression models
 #'
+#' @param n_layers number of hidden layers
 #' @param verbose monitor progress (\code{0}, default, is false and \code{1} is true)
 #' @param ignore_warnings print trace when model fitting failed
 #' @param custom_metric defining a custom metric (default is \code{NULL})
@@ -108,7 +110,7 @@ LazyDeepRegressor <- function(n_layers = 3L,
                               ...)
 {
   ns$LazyDeepRegressor(
-    n_layers = n_layers,
+    n_layers = floor(n_layers),
     verbose = verbose,
     ignore_warnings = ignore_warnings,
     custom_metric = custom_metric,

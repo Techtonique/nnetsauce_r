@@ -36,7 +36,7 @@
 #' X_test <- X[-index_train, ]
 #' y_test <- y[-index_train]
 #'
-#' obj <- LazyClassifier(n_layers = 3L)
+#' obj <- LazyDeepClassifier(n_layers = 3L)
 #' res <- obj$fit(X_train, X_test, y_train, y_test)
 #' print(res[[1]])
 #'
@@ -94,7 +94,7 @@ LazyDeepClassifier <- function(n_layers = 3L,
 #' X_test <- X[-index_train, ]
 #' y_test <- y[-index_train]
 #'
-#' obj <- LazyRegressor(n_layers = 3L)
+#' obj <- LazyDeepRegressor(n_layers = 3L)
 #' res <- obj$fit(X_train, X_test, y_train, y_test)
 #' print(res[[1]])
 #'

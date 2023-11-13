@@ -3,6 +3,7 @@
 **Randomized and quasi-randomized nnetworks for supervised learning and multivariate time series forecasting**
 
 [![r-universe](https://techtonique.r-universe.dev/badges/nnetsauce)](https://techtonique.r-universe.dev/nnetsauce)
+[![source downloads](https://hits.sh/techtonique.r-universe.dev/bin/linux/jammy/4.3/src/contrib/nnetsauce_0.15.0.tar.gz.svg?label=source%20downloads)](https://hits.sh/techtonique.r-universe.dev/bin/linux/jammy/4.3/src/contrib/nnetsauce_0.15.0.tar.gz/)
 [![CodeFactor](https://www.codefactor.io/repository/github/techtonique/nnetsauce_r/badge)](https://www.codefactor.io/repository/github/techtonique/nnetsauce_r)
 
 This is the `R` version of Python's [Techtonique/nnetsauce](https://github.com/Techtonique/nnetsauce). See [these posts](https://thierrymoudiki.github.io/blog/#QuasiRandomizedNN) for more details.

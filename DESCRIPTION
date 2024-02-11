@@ -1,9 +1,9 @@
 Package: nnetsauce
-Title: Randomized and Quasi-Randomized networks
-Version: 0.16.2
+Title: Randomized and Quasi-Randomized networks for Statistical/Machine Learning
+Version: 0.17.0
 Author: T. Moudiki
 Maintainer: T. Moudiki <thierry.moudiki@gmail.com>
-Description: Randomized and Quasi-Randomized networks
+Description: Randomized and Quasi-Randomized networks for Statistical/Machine Learning
 Depends: R (>= 3.3.3), memoise
 License: BSD_3_clause Clear + file LICENSE
 Imports: reticulate

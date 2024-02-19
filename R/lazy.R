@@ -1,7 +1,7 @@
 # 1 - Classifiers ---------------------------------------------------------
 
 #' Automated Machine Learning for classification models
-#' 
+#'
 #' See also https://techtonique.github.io/nnetsauce/
 #'
 #' @param verbose monitor progress (\code{0}, default, is false and \code{1} is true)
@@ -58,7 +58,7 @@ LazyClassifier <- function(verbose = 0,
 }
 
 #' Automated Machine Learning for deep classification models
-#' 
+#'
 #' See also https://techtonique.github.io/nnetsauce/
 #'
 #' @param verbose monitor progress (\code{0}, default, is false and \code{1} is true)
@@ -120,7 +120,7 @@ LazyDeepClassifier <- function(verbose = 0,
 # 2 - Regressors ---------------------------------------------------------
 
 #' Automated Machine Learning for regression models
-#' 
+#'
 #' See also https://techtonique.github.io/nnetsauce/
 #'
 #' @param verbose monitor progress (\code{0}, default, is false and \code{1} is true)
@@ -176,7 +176,7 @@ LazyRegressor <- function(verbose = 0,
 }
 
 #' Automated Machine Learning for deep regression models
-#' 
+#'
 #' See also https://techtonique.github.io/nnetsauce/
 #'
 #' @param verbose monitor progress (\code{0}, default, is false and \code{1} is true)
@@ -237,7 +237,7 @@ LazyDeepRegressor <- function(verbose = 0,
 # 3 - Time series ---------------------------------------------------------
 
 #' Automated Machine Learning for time series models
-#' 
+#'
 #' See also https://techtonique.github.io/nnetsauce/
 #'
 #' @param verbose monitor progress (\code{0}, default, is false and \code{1} is true)
@@ -292,7 +292,7 @@ LazyMTS <- function(verbose = 0,
 }
 
 #' Automated Machine Learning for deep time series models
-#' 
+#'
 #' See also https://techtonique.github.io/nnetsauce/
 #'
 #' @param verbose monitor progress (\code{0}, default, is false and \code{1} is true)
@@ -324,7 +324,7 @@ LazyMTS <- function(verbose = 0,
 #' res <- obj$fit(X_train, X_test)
 #' print(res[[1]])
 #'
-LazDeepyMTS <- function(verbose = 0,
+LazyDeepMTS <- function(verbose = 0,
                     ignore_warnings = TRUE,
                     custom_metric = NULL,
                     predictions = FALSE,

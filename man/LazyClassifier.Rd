@@ -10,7 +10,7 @@ LazyClassifier(
   custom_metric = NULL,
   predictions = FALSE,
   random_state = 42L,
-  classifiers = "all",
+  estimators = "all",
   preprocess = FALSE,
   ...
 )
@@ -26,14 +26,14 @@ LazyClassifier(
 
 \item{random_state}{reproducibility seed}
 
-\item{classifiers}{specify classifiers to be adjusted (default is 'all')}
+\item{estimators}{specify classifiers to be adjusted (default is 'all')}
 
 \item{preprocess}{preprocessing input covariates (default is FALSE \code{FALSE})}
 
 \item{...}{additional parameters to be passed to \code{\link{nnetsauce::CustomClassifier}}}
 }
 \description{
-Automated Machine Learning for classification models
+See also https://techtonique.github.io/nnetsauce/
 }
 \examples{
 

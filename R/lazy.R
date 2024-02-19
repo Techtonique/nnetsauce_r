@@ -1,17 +1,15 @@
-
-
-
-
 # 1 - Classifiers ---------------------------------------------------------
 
 #' Automated Machine Learning for classification models
+#' 
+#' See also https://techtonique.github.io/nnetsauce/
 #'
 #' @param verbose monitor progress (\code{0}, default, is false and \code{1} is true)
 #' @param ignore_warnings print trace when model fitting failed
 #' @param custom_metric defining a custom metric (default is \code{NULL})
 #' @param predictions obtain predictions (default is \code{FALSE})
 #' @param random_state reproducibility seed
-#' @param classifiers specify classifiers to be adjusted (default is 'all')
+#' @param estimators specify classifiers to be adjusted (default is 'all')
 #' @param preprocess preprocessing input covariates (default is FALSE \code{FALSE})
 #' @param ... additional parameters to be passed to \code{\link{nnetsauce::CustomClassifier}}
 #'
@@ -43,7 +41,7 @@ LazyClassifier <- function(verbose = 0,
                            custom_metric = NULL,
                            predictions = FALSE,
                            random_state = 42L,
-                           classifiers = "all",
+                           estimators = "all",
                            preprocess = FALSE,
                            ...)
 {
@@ -53,8 +51,68 @@ LazyClassifier <- function(verbose = 0,
     custom_metric = custom_metric,
     predictions = predictions,
     random_state = random_state,
-    classifiers = classifiers,
+    estimators = estimators,
     preprocess = preprocess,
+    ...
+  )
+}
+
+#' Automated Machine Learning for deep classification models
+#' 
+#' See also https://techtonique.github.io/nnetsauce/
+#'
+#' @param verbose monitor progress (\code{0}, default, is false and \code{1} is true)
+#' @param ignore_warnings print trace when model fitting failed
+#' @param custom_metric defining a custom metric (default is \code{NULL})
+#' @param predictions obtain predictions (default is \code{FALSE})
+#' @param random_state reproducibility seed
+#' @param estimators specify classifiers to be adjusted (default is 'all')
+#' @param preprocess preprocessing input covariates (default is FALSE \code{FALSE})
+#' @param n_layers number of layers for the deep model
+#' @param ... additional parameters to be passed to \code{\link{nnetsauce::CustomClassifier}}
+#'
+#' @return
+#' @export
+#'
+#' @examples
+#'
+#' library(datasets)
+#'
+#' set.seed(123)
+#' X <- as.matrix(iris[, 1:4])
+#' y <- as.integer(iris$Species) - 1L
+#'
+#' (index_train <- base::sample.int(n = nrow(X),
+#'                                  size = floor(0.8*nrow(X)),
+#'                                  replace = FALSE))
+#' X_train <- X[index_train, ]
+#' y_train <- y[index_train]
+#' X_test <- X[-index_train, ]
+#' y_test <- y[-index_train]
+#'
+#' obj <- LazyDeepClassifier()
+#' res <- obj$fit(X_train, X_test, y_train, y_test)
+#' print(res[[1]])
+#'
+LazyDeepClassifier <- function(verbose = 0,
+                           ignore_warnings = TRUE,
+                           custom_metric = NULL,
+                           predictions = FALSE,
+                           random_state = 42L,
+                           estimators = "all",
+                           preprocess = FALSE,
+                           n_layers = 3L,
+                           ...)
+{
+  ns$LazyDeepClassifier(
+    verbose = verbose,
+    ignore_warnings = ignore_warnings,
+    custom_metric = custom_metric,
+    predictions = predictions,
+    random_state = random_state,
+    estimators = estimators,
+    preprocess = preprocess,
+    n_layers = n_layers,
     ...
   )
 }
@@ -62,13 +120,15 @@ LazyClassifier <- function(verbose = 0,
 # 2 - Regressors ---------------------------------------------------------
 
 #' Automated Machine Learning for regression models
+#' 
+#' See also https://techtonique.github.io/nnetsauce/
 #'
 #' @param verbose monitor progress (\code{0}, default, is false and \code{1} is true)
 #' @param ignore_warnings print trace when model fitting failed
 #' @param custom_metric defining a custom metric (default is \code{NULL})
 #' @param predictions obtain predictions (default is \code{FALSE})
 #' @param random_state reproducibility seed
-#' @param regressors specify regressors to be adjusted (default is 'all')
+#' @param estimators specify regressors to be adjusted (default is 'all')
 #' @param preprocess preprocessing input covariates (default is FALSE \code{FALSE})
 #' @param ... additional parameters to be passed to \code{\link{nnetsauce::CustomRegressor}}
 #'
@@ -99,7 +159,7 @@ LazyRegressor <- function(verbose = 0,
                           custom_metric = NULL,
                           predictions = FALSE,
                           random_state = 42L,
-                          regressors = "all",
+                          estimators = "all",
                           preprocess = FALSE,
                           ...)
 {
@@ -109,8 +169,67 @@ LazyRegressor <- function(verbose = 0,
     custom_metric = custom_metric,
     predictions = predictions,
     random_state = random_state,
-    regressors = regressors,
+    estimators = estimators,
     preprocess = preprocess,
+    ...
+  )
+}
+
+#' Automated Machine Learning for deep regression models
+#' 
+#' See also https://techtonique.github.io/nnetsauce/
+#'
+#' @param verbose monitor progress (\code{0}, default, is false and \code{1} is true)
+#' @param ignore_warnings print trace when model fitting failed
+#' @param custom_metric defining a custom metric (default is \code{NULL})
+#' @param predictions obtain predictions (default is \code{FALSE})
+#' @param random_state reproducibility seed
+#' @param estimators specify regressors to be adjusted (default is 'all')
+#' @param preprocess preprocessing input covariates (default is FALSE \code{FALSE})
+#' @param n_layers number of layers for the deep model
+#' @param ... additional parameters to be passed to \code{\link{nnetsauce::CustomRegressor}}
+#'
+#' @return
+#' @export
+#'
+#' @examples
+#'
+#' X <- MASS::Boston[,-14] # dataset has an ethical problem
+#' y <- MASS::Boston$medv
+#'
+#' set.seed(13)
+#' (index_train <- base::sample.int(n = nrow(X),
+#'                                  size = floor(0.8*nrow(X)),
+#'                                  replace = FALSE))
+#' X_train <- X[index_train, ]
+#' y_train <- y[index_train]
+#' X_test <- X[-index_train, ]
+#' y_test <- y[-index_train]
+#'
+#' obj <- LazyDeepRegressor()
+#' res <- obj$fit(X_train, X_test, y_train, y_test)
+#' print(res[[1]])
+#'
+#'
+LazyDeepRegressor <- function(verbose = 0,
+                          ignore_warnings = TRUE,
+                          custom_metric = NULL,
+                          predictions = FALSE,
+                          random_state = 42L,
+                          estimators = "all",
+                          preprocess = FALSE,
+                          n_layers = 3L,
+                          ...)
+{
+  ns$LazyDeepRegressor(
+    verbose = verbose,
+    ignore_warnings = ignore_warnings,
+    custom_metric = custom_metric,
+    predictions = predictions,
+    random_state = random_state,
+    estimators = estimators,
+    preprocess = preprocess,
+    n_layers = n_layers,
     ...
   )
 }
@@ -118,13 +237,15 @@ LazyRegressor <- function(verbose = 0,
 # 3 - Time series ---------------------------------------------------------
 
 #' Automated Machine Learning for time series models
+#' 
+#' See also https://techtonique.github.io/nnetsauce/
 #'
 #' @param verbose monitor progress (\code{0}, default, is false and \code{1} is true)
 #' @param ignore_warnings print trace when model fitting failed
 #' @param custom_metric defining a custom metric (default is \code{NULL})
 #' @param predictions obtain predictions (default is \code{FALSE})
 #' @param random_state reproducibility seed
-#' @param regressors specify regressors to be adjusted (default is 'all')
+#' @param estimators specify regressors to be adjusted (default is 'all')
 #' @param preprocess preprocessing input covariates (default is FALSE \code{FALSE})
 #' @param ... additional parameters to be passed to \code{\link{nnetsauce::CustomRegressor}}
 #'
@@ -152,7 +273,7 @@ LazyMTS <- function(verbose = 0,
                     custom_metric = NULL,
                     predictions = FALSE,
                     random_state = 42L,
-                    regressors = "all",
+                    estimators = "all",
                     preprocess = FALSE,
                     show_progress=TRUE,
                     ...)
@@ -163,9 +284,67 @@ LazyMTS <- function(verbose = 0,
     custom_metric = custom_metric,
     predictions = predictions,
     random_state = random_state,
-    regressors = regressors,
+    estimators = estimators,
     preprocess = preprocess,
     show_progress = show_progress,
+    ...
+  )
+}
+
+#' Automated Machine Learning for deep time series models
+#' 
+#' See also https://techtonique.github.io/nnetsauce/
+#'
+#' @param verbose monitor progress (\code{0}, default, is false and \code{1} is true)
+#' @param ignore_warnings print trace when model fitting failed
+#' @param custom_metric defining a custom metric (default is \code{NULL})
+#' @param predictions obtain predictions (default is \code{FALSE})
+#' @param random_state reproducibility seed
+#' @param estimators specify regressors to be adjusted (default is 'all')
+#' @param preprocess preprocessing input covariates (default is FALSE \code{FALSE})
+#' @param n_layers number of layers for the deep model
+#' @param ... additional parameters to be passed to \code{\link{nnetsauce::CustomRegressor}}
+#'
+#' @return
+#' @export
+#'
+#' @examples
+#'
+#' set.seed(123)
+#' X <- matrix(rnorm(300), 100, 3)
+#'
+#' (index_train <- base::sample.int(n = nrow(X),
+#'                                  size = floor(0.8*nrow(X)),
+#'                                  replace = FALSE))
+#' X_train <- data.frame(X[index_train, ])
+#' X_test <- data.frame(X[-index_train, ])
+#'
+#' obj <- LazyDeepMTS()
+#'
+#' res <- obj$fit(X_train, X_test)
+#' print(res[[1]])
+#'
+LazDeepyMTS <- function(verbose = 0,
+                    ignore_warnings = TRUE,
+                    custom_metric = NULL,
+                    predictions = FALSE,
+                    random_state = 42L,
+                    estimators = "all",
+                    preprocess = FALSE,
+                    show_progress=TRUE,
+                    n_layers = 3L,
+                    ...)
+{
+  ns$LazyDeepMTS(
+    verbose = verbose,
+    ignore_warnings = ignore_warnings,
+    custom_metric = custom_metric,
+    predictions = predictions,
+    random_state = random_state,
+    estimators = estimators,
+    preprocess = preprocess,
+    show_progress = show_progress,
+    n_layers = n_layers,
     ...
   )
 }

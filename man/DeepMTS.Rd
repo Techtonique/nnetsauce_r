@@ -4,32 +4,12 @@
 \alias{DeepMTS}
 \title{Deep MTS models}
 \usage{
-DeepMTS(
-  obj,
-  n_layers = 3L,
-  verbose = 0,
-  ignore_warnings = TRUE,
-  custom_metric = NULL,
-  predictions = FALSE,
-  random_state = 42L,
-  regressors = "all",
-  ...
-)
+DeepMTS(obj, n_layers = 3L, ...)
 }
 \arguments{
 \item{obj}{a model object}
 
 \item{n_layers}{number of hidden layers}
-
-\item{verbose}{monitor progress (\code{0}, default, is false and \code{1} is true)}
-
-\item{ignore_warnings}{print trace when model fitting failed}
-
-\item{custom_metric}{defining a custom metric (default is \code{NULL})}
-
-\item{predictions}{obtain predictions (default is \code{FALSE})}
-
-\item{random_state}{reproducibility seed}
 
 \item{...}{additional parameters to be passed to \code{\link{nnetsauce::CustomRegressor}}}
 }

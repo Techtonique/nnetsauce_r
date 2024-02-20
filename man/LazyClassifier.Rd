@@ -32,6 +32,9 @@ LazyClassifier(
 
 \item{...}{additional parameters to be passed to \code{\link{nnetsauce::CustomClassifier}}}
 }
+\value{
+a list that you can \code{$fit}
+}
 \description{
 See also https://techtonique.github.io/nnetsauce/
 }

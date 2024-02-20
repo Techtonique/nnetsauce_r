@@ -13,7 +13,7 @@
 #' @param preprocess preprocessing input covariates (default is FALSE \code{FALSE})
 #' @param ... additional parameters to be passed to \code{\link{nnetsauce::CustomClassifier}}
 #'
-#' @return
+#' @return a list that you can \code{$fit}
 #' @export
 #'
 #' @examples
@@ -71,7 +71,7 @@ LazyClassifier <- function(verbose = 0,
 #' @param n_layers number of layers for the deep model
 #' @param ... additional parameters to be passed to \code{\link{nnetsauce::CustomClassifier}}
 #'
-#' @return
+#' @return a list that you can \code{$fit}
 #' @export
 #'
 #' @examples
@@ -132,7 +132,7 @@ LazyDeepClassifier <- function(verbose = 0,
 #' @param preprocess preprocessing input covariates (default is FALSE \code{FALSE})
 #' @param ... additional parameters to be passed to \code{\link{nnetsauce::CustomRegressor}}
 #'
-#' @return
+#' @return a list that you can \code{$fit}
 #' @export
 #'
 #' @examples
@@ -189,7 +189,7 @@ LazyRegressor <- function(verbose = 0,
 #' @param n_layers number of layers for the deep model
 #' @param ... additional parameters to be passed to \code{\link{nnetsauce::CustomRegressor}}
 #'
-#' @return
+#' @return a list that you can \code{$fit}
 #' @export
 #'
 #' @examples
@@ -249,7 +249,7 @@ LazyDeepRegressor <- function(verbose = 0,
 #' @param preprocess preprocessing input covariates (default is FALSE \code{FALSE})
 #' @param ... additional parameters to be passed to \code{\link{nnetsauce::CustomRegressor}}
 #'
-#' @return
+#' @return a list that you can \code{$fit}
 #' @export
 #'
 #' @examples
@@ -305,7 +305,7 @@ LazyMTS <- function(verbose = 0,
 #' @param n_layers number of layers for the deep model
 #' @param ... additional parameters to be passed to \code{\link{nnetsauce::CustomRegressor}}
 #'
-#' @return
+#' @return a list that you can \code{$fit}
 #' @export
 #'
 #' @examples

@@ -32,6 +32,9 @@ LazyRegressor(
 
 \item{...}{additional parameters to be passed to \code{\link{nnetsauce::CustomRegressor}}}
 }
+\value{
+a list that you can \code{$fit}
+}
 \description{
 See also https://techtonique.github.io/nnetsauce/
 }

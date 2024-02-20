@@ -119,7 +119,6 @@ DeepMTS <- function(obj,
 {
   ns$DeepMTS(obj,
     n_layers = n_layers,
-    verbose = verbose,
     ...
   )
 }

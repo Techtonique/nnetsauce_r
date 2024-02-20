@@ -33,8 +33,8 @@ y_test <- y[-index_train]
 obj2 <- sklearn$linear_model$ElasticNet()
 
 obj <- DeepRegressor(obj2, n_layers = 3L, n_clusters=2L)
-res <- obj$fit(X_train, X_test, y_train, y_test)
-print(res[[1]])
+res <- obj$fit(X_train, y_train)
+print(obj$predict(X_test))
 
 
 }

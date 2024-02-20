@@ -21,11 +21,11 @@ See also https://techtonique.github.io/nnetsauce/
 set.seed(123)
 X <- matrix(rnorm(300), 100, 3)
 
-obj <- sklearn$linear_model$BayesianRidge()
+obj <- sklearn$linear_model$ElasticNet()
 obj2 <- DeepMTS(obj)
 
 obj2$fit(X)
-obj2$predict(return_std = TRUE)
+obj2$predict()
 
 
 }

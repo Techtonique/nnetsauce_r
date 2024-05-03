@@ -5,36 +5,21 @@ sklearn <- NULL
 .onLoad <- function(libname, pkgname) {
   utils::install.packages("reticulate",
                           repos = list(CRAN = "https://cloud.r-project.org"))
-  try(reticulate::virtualenv_create('./r-reticulate'),
-      silent = TRUE)
-  try(reticulate::use_virtualenv('./r-reticulate'),
-      silent = TRUE)
-  try(reticulate::py_install("numpy",
-                             envname = "./r-reticulate",
-                             pip = TRUE),
-      silent = TRUE)
-  try(reticulate::py_install("pandas",
-                             envname = "./r-reticulate",
-                             pip = TRUE),
-      silent = TRUE)
-  try(reticulate::py_install("scipy",
-                             envname = "./r-reticulate",
-                             pip = TRUE,),
-      silent = TRUE)
-  try(reticulate::py_install("scikit-learn",
-                             envname = "./r-reticulate",
-                             pip = TRUE),
-      silent = TRUE)
+
   try(reticulate::py_install(
-    "nnetsauce",
-    envname = "./r-reticulate",
+    "scikit-learn",
     pip = TRUE,
     pip_options = "--upgrade",
     pip_ignore_installed = TRUE
-  ),
-  silent = TRUE)
+  ), silent = TRUE)
+  try(reticulate::py_install(
+    "nnetsauce",
+    pip = TRUE,
+    pip_options = "--upgrade",
+    pip_ignore_installed = TRUE
+  ), silent = TRUE)
+
   # use superassignment to update global reference to package
-  ns <<- reticulate::import("nnetsauce", delay_load = TRUE)
   sklearn <<- reticulate::import("sklearn", delay_load = TRUE)
+  ns <<- reticulate::import("nnetsauce", delay_load = TRUE)
 }
-.onLoad <- memoise::memoise(.onLoad)

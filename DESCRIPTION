@@ -1,6 +1,6 @@
 Package: nnetsauce
 Title: Randomized and Quasi-Randomized networks for Statistical/Machine Learning
-Version: 0.20.1
+Version: 0.20.2
 Date: 2024-05-03
 Author: T. Moudiki
 Maintainer: T. Moudiki <thierry.moudiki@gmail.com>

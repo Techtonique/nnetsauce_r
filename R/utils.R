@@ -77,7 +77,8 @@ calculate_next <- function(end_x, freq_x) {
 #' @examples
 to_forecast <- function(out,
                         start_input,
-                        frequency_input)
+                        frequency_input
+                        )
 {
   n_series <- out$n_series
 
@@ -91,13 +92,13 @@ to_forecast <- function(out,
                          nrow(out$df_))
   start_preds <- calculate_next(end_x,
                                 frequency_input)
-  res$mean <- ts(as.matrix(out$mean),
+  res$mean <- ts(as.matrix(out$mean_),
                  start=start_preds,
                  frequency=frequency_input)
-  res$lower <- ts(as.matrix(out$lower),
+  res$lower <- ts(as.matrix(out$lower_),
                   start=start_preds,
                   frequency=frequency_input)
-  res$upper <- ts(as.matrix(out$upper),
+  res$upper <- ts(as.matrix(out$upper_),
                   start=start_preds,
                   frequency=frequency_input)
   res$level <- out$level

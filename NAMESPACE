@@ -25,4 +25,4 @@ export(RandomBagRegressor)
 export(Ridge2Classifier)
 export(Ridge2MultitaskClassifier)
 export(Ridge2Regressor)
-
+export(to_forecast)

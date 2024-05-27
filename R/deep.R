@@ -136,6 +136,8 @@ DeepMTS <- function(obj,
                     verbose=0,
                     ...)
 {
+  backend <- match.arg(backend)
+
   return(ns$DeepMTS(obj,
     n_layers = n_layers,
     n_hidden_features=n_hidden_features,

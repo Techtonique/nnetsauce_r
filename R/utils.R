@@ -63,3 +63,55 @@ calculate_next <- function(end_x, freq_x) {
   return(c(next_year, next_period))
 }
 
+
+#' Transform list to forecast or mforecast object
+#'
+#' @param out a list, an object constructed by \code{MTS} or \code{DeepMTS}
+#' @param start_input start of the input time series (as in \code{stats::start})
+#' @param frequency_input frequency of the input time series (as in \code{stats::frequency})
+#'
+#' @return an object of class \code{forecast} or \code{mforecast}
+#'
+#' @export
+#'
+#' @examples
+to_forecast <- function(out,
+                        start_input,
+                        frequency_input)
+{
+  n_series <- out$n_series
+
+  res <- vector("list", 9)
+  res$model <- out
+  res$method <- "[Deep]MTS"
+
+  # returns a time series object
+  end_x <- calculate_end(start_input,
+                         frequency_input,
+                         nrow(out$df_))
+  start_preds <- calculate_next(end_x,
+                                frequency_input)
+  res$mean <- ts(as.matrix(out$mean),
+                 start=start_preds,
+                 frequency=frequency_input)
+  res$lower <- ts(as.matrix(out$lower),
+                  start=start_preds,
+                  frequency=frequency_input)
+  res$upper <- ts(as.matrix(out$upper),
+                  start=start_preds,
+                  frequency=frequency_input)
+  res$level <- out$level
+  res$x <- ts(as.matrix(out$df_),
+              start=start_input,
+              frequency=frequency_input)
+  res$residuals <- NULL
+  res$fitted <- NULL
+  if (n_series <= 1L)
+  {
+    class(res) <- "forecast"
+  } else {
+    class(res) <- "mforecast"
+  }
+  return(res)
+}
+

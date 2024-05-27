@@ -31,8 +31,6 @@
 #' obj2$predict(return_std = TRUE)
 #'
 MTS <- function(obj,
-                start_input = NULL,
-                frequency_input = NULL,
                 n_hidden_features=5L,
                 activation_name="relu",
                 a=0.01,
@@ -53,7 +51,7 @@ MTS <- function(obj,
 {
   backend <- match.arg(backend)
 
-  out <- ns$MTS(obj,
+  return(ns$MTS(obj,
          n_hidden_features=n_hidden_features,
          activation_name=activation_name,
          a=a,
@@ -70,58 +68,5 @@ MTS <- function(obj,
          agg=agg,
          seed=seed,
          backend=backend,
-         verbose=verbose)
-
-  n_series <- out$n_series
-  res <- list()
-  res$model <- out
-  res$method <- "MTS"
-
-  if (is.null(start_input))
-  {
-    res$mean <- ts(as.matrix(out$mean))
-    res$lower <- ts(as.matrix(out$lower))
-    res$upper <- ts(as.matrix(out$upper))
-    res$level <- out$level
-    res$x <- ts(as.matrix(out$df_))
-    if (n_series <= 1L)
-    {
-      class(res) <- "forecast"
-    } else {
-      class(res) <- "mforecast"
-    }
-    return(res)
-
-  } else {
-
-    # returns a time series object
-    stopifnot(!is.null(frequency_input))
-    end_x <- calculate_end(start_input,
-                  frequency_input,
-                  nrow(out$df_))
-    start_preds <- calculate_next(end_x,
-                                  frequency_input)
-    res$mean <- ts(as.matrix(out$mean),
-                   start=start_preds,
-                   frequency=frequency_input)
-    res$lower <- ts(as.matrix(out$lower),
-                    start=start_preds,
-                    frequency=frequency_input)
-    res$upper <- ts(as.matrix(out$upper),
-                    start=start_preds,
-                    frequency=frequency_input)
-    res$level <- out$level
-    res$x <- ts(as.matrix(out$df_),
-                start=start_input,
-                frequency=frequency_input)
-    res$residuals <- NULL
-    res$fitted <- NULL
-    if (n_series <= 1L)
-    {
-      class(res) <- "forecast"
-    } else {
-      class(res) <- "mforecast"
-    }
-  }
-  return(res)
+         verbose=verbose))
 }

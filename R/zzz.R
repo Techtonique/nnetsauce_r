@@ -6,6 +6,9 @@ sklearn <- NULL
   utils::install.packages("reticulate",
                           repos = list(CRAN = "https://cloud.r-project.org"))
 
+  reticulate::py_require("scikit-learn")
+  reticulate::py_require("nnetsauce")
+
   try(reticulate::py_install(
     "scikit-learn",
     pip = TRUE,

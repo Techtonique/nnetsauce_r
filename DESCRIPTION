@@ -1,7 +1,7 @@
 Package: nnetsauce
 Title: Randomized and Quasi-Randomized networks for Statistical/Machine Learning
-Version: 0.20.6
-Date: 2024-06-02    
+Version: 0.30.5
+Date: 2025-04-18    
 Author: T. Moudiki
 Maintainer: T. Moudiki <thierry.moudiki@gmail.com>
 Description: Randomized and Quasi-Randomized networks for Statistical/Machine Learning
@@ -11,4 +11,4 @@ License: BSD_3_clause Clear + file LICENSE
 Suggests: roxygen2, reticulate
 Encoding: UTF-8
 LazyData: true
-RoxygenNote: 7.3.1
+RoxygenNote: 7.3.2

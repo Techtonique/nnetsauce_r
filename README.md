@@ -2,7 +2,7 @@
 
 **Randomized and quasi-randomized nnetworks for supervised learning and multivariate time series forecasting**
 
-[![nnetsauce status badge](https://techtonique.r-universe.dev/badges/nnetsauce)](https://techtonique.r-universe.dev/nnetsauce) [![CodeFactor](https://www.codefactor.io/repository/github/techtonique/nnetsauce_r/badge)](https://www.codefactor.io/repository/github/techtonique/nnetsauce_r) [![HitCount](https://hits.dwyl.com/Techtonique/nnetsauce_r.svg?style=flat-square)](http://hits.dwyl.com/Techtonique/nnetsauce_r)
+[![nnetsauce status badge](https://r-packages.techtonique.net/badges/nnetsauce)](https://r-packages.techtonique.net/nnetsauce) [![CodeFactor](https://www.codefactor.io/repository/github/techtonique/nnetsauce_r/badge)](https://www.codefactor.io/repository/github/techtonique/nnetsauce_r) [![HitCount](https://hits.dwyl.com/Techtonique/nnetsauce_r.svg?style=flat-square)](http://hits.dwyl.com/Techtonique/nnetsauce_r)
 
 This is the `R` version of Python's [Techtonique/nnetsauce](https://github.com/Techtonique/nnetsauce). See [these posts](https://thierrymoudiki.github.io/blog/#QuasiRandomizedNN) for more details.
 
@@ -19,7 +19,7 @@ remotes::install_github("Techtonique/nnetsauce_r")
 **From R-universe**
 
 ```bash
-install.packages('nnetsauce', repos = c('https://techtonique.r-universe.dev',
+install.packages('nnetsauce', repos = c('https://r-packages.techtonique.net',
 'https://cloud.r-project.org'))
 ```
 

@@ -4,7 +4,28 @@
 \alias{DeepMTS}
 \title{Deep MTS models}
 \usage{
-DeepMTS(obj, n_layers = 3L, ...)
+DeepMTS(
+  obj,
+  n_layers = 3L,
+  n_hidden_features = 5L,
+  activation_name = "relu",
+  a = 0.01,
+  nodes_sim = "sobol",
+  bias = TRUE,
+  dropout = 0,
+  direct_link = TRUE,
+  n_clusters = 2L,
+  cluster_encode = TRUE,
+  type_clust = "kmeans",
+  lags = 1L,
+  replications = NULL,
+  kernel = NULL,
+  agg = "mean",
+  seed = 123L,
+  backend = c("cpu", "gpu", "tpu"),
+  verbose = 0,
+  ...
+)
 }
 \arguments{
 \item{obj}{a model object}

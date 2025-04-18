@@ -6,8 +6,6 @@
 \usage{
 MTS(
   obj,
-  start_input = NULL,
-  frequency_input = NULL,
   n_hidden_features = 5L,
   activation_name = "relu",
   a = 0.01,

@@ -32,10 +32,12 @@ y_train <- y[index_train]
 X_test <- X[-index_train, ]
 y_test <- y[-index_train]
 
-obj2 <- sklearn$linear_model$ElasticNet()
+obj2 <- sklearn$linear_model$LogisticRegressionCV()
 
 obj <- DeepClassifier(obj2, n_layers = 3L)
 res <- obj$fit(X_train, y_train)
-print(obj$predict(X_test))
+
+# accuracy
+print(mean(obj$predict(X_test)==y_test))
 
 }

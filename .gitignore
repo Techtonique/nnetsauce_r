@@ -55,3 +55,7 @@ rsconnect/
 .Rbuildignore
 .Rprofile
 r-reticulate/
+
+*.html
+
+.DS_Store

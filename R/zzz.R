@@ -57,28 +57,7 @@ pandas <- NULL
   }, error = function(e) {
     message("Failed to use virtual environment: ", e$message)
     # Import sklearn lazily
-    tryCatch({
-      reticulate::py_install("nnetsauce")
-      reticulate::py_install("scikit-learn")
-      reticulate::py_install("numpy")
-      reticulate::py_install("pandas")
-      reticulate::use_virtualenv("r-reticulate", required = TRUE)
-      ns <<- reticulate::import("nnetsauce", delay_load = TRUE)
-      sklearn <<- reticulate::import("sklearn", delay_load = TRUE)
-      numpy <<- reticulate::import("numpy", delay_load = TRUE)
-      pandas <<- reticulate::import("pandas", delay_load = TRUE)    
-    }, error = function(e) {        
-      ns <<- reticulate::import("nnetsauce", delay_load = TRUE)
-      sklearn <<- reticulate::import("sklearn", delay_load = TRUE)
-      numpy <<- reticulate::import("numpy", delay_load = TRUE)
-      pandas <<- reticulate::import("pandas", delay_load = TRUE)   
-      reticulate::py_install("nnetsauce", envname = ".")
-      reticulate::use_virtualenv(".", required = TRUE)     
-      ns <<- reticulate::import("nnetsauce", delay_load = TRUE)
-    })
-  })    
- }, error = function(e) { # If using 'Global' virtual environment fails, use  the default local 'r-reticulate'
-    tryCatch({
+    if (!reticulate::py_available("scikit-learn")) {
       message("Installing sklearn from r-reticulate...")
       reticulate::py_install("nnetsauce")
       reticulate::py_install("scikit-learn")
@@ -89,13 +68,32 @@ pandas <- NULL
       sklearn <<- reticulate::import("sklearn", delay_load = TRUE)
       numpy <<- reticulate::import("numpy", delay_load = TRUE)
       pandas <<- reticulate::import("pandas", delay_load = TRUE)    
-    }, error = function(e) { # If using 'r-reticulate' fails, use the default local 'Global' virtual environment, e.g in Colab     
-      sklearn <<- reticulate::import("sklearn", delay_load = TRUE)
+    } else { # If using 'r-reticulate' fails, use the default local 'Global' virtual environment, e.g in Colab     
       numpy <<- reticulate::import("numpy", delay_load = TRUE)
       pandas <<- reticulate::import("pandas", delay_load = TRUE)        
-      reticulate::py_install("nnetsauce", envname = ".")
-      reticulate::use_virtualenv(".", required = TRUE)     
+      reticulate::py_install("nnetsauce")
+      reticulate::use_virtualenv("r-reticulate", required = TRUE)     
       ns <<- reticulate::import("nnetsauce", delay_load = TRUE)
-    })
+    }
+  })    
+ }, error = function(e) { # If using 'Global' virtual environment fails, use  the default local 'r-reticulate'
+    if (!reticulate::py_available("scikit-learn")) {
+      message("Installing sklearn from r-reticulate...")
+      reticulate::py_install("nnetsauce")
+      reticulate::py_install("scikit-learn")
+      reticulate::py_install("numpy")
+      reticulate::py_install("pandas")
+      reticulate::use_virtualenv("r-reticulate", required = TRUE)
+      ns <<- reticulate::import("nnetsauce", delay_load = TRUE)
+      sklearn <<- reticulate::import("sklearn", delay_load = TRUE)
+      numpy <<- reticulate::import("numpy", delay_load = TRUE)
+      pandas <<- reticulate::import("pandas", delay_load = TRUE)    
+    } else { # If using 'r-reticulate' fails, use the default local 'Global' virtual environment, e.g in Colab     
+      numpy <<- reticulate::import("numpy", delay_load = TRUE)
+      pandas <<- reticulate::import("pandas", delay_load = TRUE)        
+      reticulate::py_install("nnetsauce")
+      reticulate::use_virtualenv("r-reticulate", required = TRUE)     
+      ns <<- reticulate::import("nnetsauce", delay_load = TRUE)
+    }
   })  
 }

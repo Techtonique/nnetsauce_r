@@ -1,4 +1,3 @@
-
 # 1 - Classifiers ---------------------------------------------------------
 
 # 2 - Regressors ---------------------------------------------------------
@@ -50,8 +49,9 @@ BaseRegressor <- function(n_hidden_features=5L,
                           backend=c("cpu", "gpu", "tpu"))
 {
  backend <- match.arg(backend)
-
- ns$BaseRegressor(n_hidden_features=n_hidden_features,
+ 
+ # Create the regressor object
+ regressor <- ns$BaseRegressor(n_hidden_features=n_hidden_features,
                   activation_name=activation_name,
                   a=a,
                   nodes_sim=nodes_sim,
@@ -65,4 +65,20 @@ BaseRegressor <- function(n_hidden_features=5L,
                   row_sample=row_sample,
                   seed=seed,
                   backend=backend)
+ 
+ # Override fit method
+ regressor$fit <- function(X, y, ...) {
+   X <- reticulate::array_reshape(X, dim = c(dim(X)[1], dim(X)[2]))
+   y <- as.vector(y)
+   ns$BaseRegressor$fit(regressor, X, y, ...)
+ }
+ 
+ # Override predict method
+ regressor$predict <- function(X, ...) {
+   X <- reticulate::array_reshape(X, dim = c(dim(X)[1], dim(X)[2]))
+   predictions <- ns$BaseRegressor$predict(regressor, X, ...)
+   return(as.vector(predictions))
+ }
+ 
+ return(regressor)
 }

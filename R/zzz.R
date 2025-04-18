@@ -71,7 +71,10 @@ pandas <- NULL
       ns <<- reticulate::import("nnetsauce", delay_load = TRUE)
       sklearn <<- reticulate::import("sklearn", delay_load = TRUE)
       numpy <<- reticulate::import("numpy", delay_load = TRUE)
-      pandas <<- reticulate::import("pandas", delay_load = TRUE)        
+      pandas <<- reticulate::import("pandas", delay_load = TRUE)   
+      reticulate::py_install("nnetsauce", envname = ".")
+      reticulate::use_virtualenv(".", required = TRUE)     
+      ns <<- reticulate::import("nnetsauce", delay_load = TRUE)
     })
   })    
  }, error = function(e) { # If using 'Global' virtual environment fails, use  the default local 'r-reticulate'
@@ -87,10 +90,12 @@ pandas <- NULL
       numpy <<- reticulate::import("numpy", delay_load = TRUE)
       pandas <<- reticulate::import("pandas", delay_load = TRUE)    
     }, error = function(e) { # If using 'r-reticulate' fails, use the default local 'Global' virtual environment, e.g in Colab     
-      ns <<- reticulate::import("nnetsauce", delay_load = TRUE)
       sklearn <<- reticulate::import("sklearn", delay_load = TRUE)
       numpy <<- reticulate::import("numpy", delay_load = TRUE)
       pandas <<- reticulate::import("pandas", delay_load = TRUE)        
+      reticulate::py_install("nnetsauce", envname = ".")
+      reticulate::use_virtualenv(".", required = TRUE)     
+      ns <<- reticulate::import("nnetsauce", delay_load = TRUE)
     })
   })  
 }

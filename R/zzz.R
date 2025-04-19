@@ -1,3 +1,89 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 #' @export
 VENV_PATH <- NULL 
 
@@ -42,6 +128,7 @@ pandas <- NULL
         VENV_PATH,
         packages = c("scikit-learn", "nnetsauce",
         "numpy", "pandas"),
+        pip_options = "--upgrade --no-cache-dir",
         ignore_installed = TRUE
       )
     }, error = function(e) {
@@ -56,14 +143,14 @@ pandas <- NULL
     numpy <<- reticulate::import("numpy", delay_load = TRUE)
     pandas <<- reticulate::import("pandas", delay_load = TRUE)    
   }, error = function(e) {
-    message("Failed to use virtual environment: ", e$message)
+    message("Failed to use persistent virtual environment: ", e$message)
     # Import sklearn lazily
     tryCatch({
-      message("Installing sklearn from r-reticulate...")
-      reticulate::py_install("scikit-learn")      
-      reticulate::py_install("numpy")
-      reticulate::py_install("pandas")
-      reticulate::py_install("nnetsauce")
+      message("Installing packages in environment r-reticulate...")
+      reticulate::py_install("scikit-learn", ignore_installed = TRUE)      
+      reticulate::py_install("numpy", ignore_installed = TRUE)
+      reticulate::py_install("pandas", ignore_installed = TRUE)
+      reticulate::py_install("nnetsauce", ignore_installed = TRUE)
       reticulate::use_virtualenv("r-reticulate", required = TRUE)
       message("Importing sklearn...")
       sklearn <<- reticulate::import("sklearn", delay_load = TRUE)
@@ -75,17 +162,17 @@ pandas <- NULL
       sklearn <<- reticulate::import("sklearn", delay_load = TRUE)
       numpy <<- reticulate::import("numpy", delay_load = TRUE)
       pandas <<- reticulate::import("pandas", delay_load = TRUE)        
-      system("pip install nnetsauce")
+      system("pip install nnetsauce --upgrade --no-cache-dir")
       ns <<- reticulate::import("nnetsauce", delay_load = TRUE)
     })
   })    
  }, error = function(e) { # If using 'Global' virtual environment fails, use  the default local 'r-reticulate'
     tryCatch({
       message("Installing sklearn from r-reticulate...")
-      reticulate::py_install("scikit-learn")
-      reticulate::py_install("nnetsauce")
-      reticulate::py_install("numpy")
-      reticulate::py_install("pandas")
+      reticulate::py_install("scikit-learn", ignore_installed = TRUE)
+      reticulate::py_install("nnetsauce", ignore_installed = TRUE)
+      reticulate::py_install("numpy", ignore_installed = TRUE)
+      reticulate::py_install("pandas", ignore_installed = TRUE)
       reticulate::use_virtualenv("r-reticulate", required = TRUE)
       message("Importing sklearn...")
       sklearn <<- reticulate::import("sklearn", delay_load = TRUE)
@@ -97,7 +184,7 @@ pandas <- NULL
       sklearn <<- reticulate::import("sklearn", delay_load = TRUE)      
       numpy <<- reticulate::import("numpy", delay_load = TRUE)
       pandas <<- reticulate::import("pandas", delay_load = TRUE)        
-      system("pip install nnetsauce")
+      system("pip install nnetsauce --upgrade --no-cache-dir")
       ns <<- reticulate::import("nnetsauce", delay_load = TRUE)
     })
   })  

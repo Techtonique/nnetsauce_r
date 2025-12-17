@@ -51,7 +51,7 @@ library(nnetsauce)
  X_test <- X[-index_train, ]
  y_test <- y[-index_train]
 
- obj <- nnetsauce::GLMClassifier(venv_path = "../venv")
+ obj <- nnetsauce::GLMClassifier(venv_path = "./venv")
  obj$fit(X_train, y_train)
  print(obj$score(X_test, y_test))
 ```
@@ -71,7 +71,7 @@ y_train <- y[index_train]
 X_test <- X[-index_train, ]
 y_test <- y[-index_train]
 
-obj <- LazyRegressor()
+obj <- LazyRegressor(venv_path = "./venv")
 res <- obj$fit(X_train, X_test, y_train, y_test)
 print(res[[1]])
 ```
@@ -88,7 +88,7 @@ X <- matrix(rnorm(300), 100, 3)
 X_train <- data.frame(X[index_train, ])
 X_test <- data.frame(X[-index_train, ])
 
-obj <- LazyMTS()
+obj <- LazyMTS(venv_path = "./venv")
 
 res <- obj$fit(X_train, X_test)
 print(res[[1]])

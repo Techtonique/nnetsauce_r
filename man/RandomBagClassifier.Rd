@@ -22,7 +22,9 @@ RandomBagClassifier(
   n_jobs = NULL,
   seed = 123L,
   verbose = 1L,
-  backend = c("cpu", "gpu", "tpu")
+  backend = c("cpu", "gpu", "tpu"),
+  venv_path = "./venv",
+  ...
 )
 }
 \description{

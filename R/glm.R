@@ -42,8 +42,12 @@ GLMClassifier <- function(n_hidden_features=5L,
                           type_clust="kmeans",
                           type_scaling=c("std", "std", "std"),
                           optimizer=ns$Optimizer(),
-                          seed=123L)
-{
+                          seed=123L, 
+                          venv_path = "./venv",
+                          ...) {
+  
+  # Lazy load sklearn only when needed
+  ns <- get_ns(venv_path)
   #backend <- match.arg(backend)
 
   ns$GLMClassifier(n_hidden_features=n_hidden_features,
@@ -109,9 +113,12 @@ GLMRegressor <- function(n_hidden_features=5L,
                           type_clust="kmeans",
                           type_scaling=c("std", "std", "std"),
                           optimizer=ns$Optimizer(),
-                          seed=123L)
-{
-  # backend <- match.arg(backend)
+                          seed=123L, 
+                          venv_path = "./venv",
+                          ...) {
+  
+  # Lazy load sklearn only when needed
+  ns <- get_ns(venv_path)
 
   ns$GLMRegressor(n_hidden_features=n_hidden_features,
                    lambda1=lambda1,

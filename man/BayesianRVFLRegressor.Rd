@@ -18,7 +18,9 @@ BayesianRVFLRegressor(
   s = 0.1,
   sigma = 0.05,
   seed = 123L,
-  backend = c("cpu", "gpu", "tpu")
+  backend = c("cpu", "gpu", "tpu"),
+  venv_path = "./venv",
+  ...
 )
 }
 \description{

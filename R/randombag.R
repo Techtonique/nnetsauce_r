@@ -22,7 +22,8 @@
 #' y_train <- y[index_train]
 #' X_test <- X[-index_train, ]
 #' y_test <- y[-index_train]
-#'
+#' 
+#' sklearn <- nnetsauce::get_sklearn()
 #' obj <- sklearn$tree$DecisionTreeClassifier()
 #' obj2 <- RandomBagClassifier(obj, n_estimators=50L,
 #' n_hidden_features=5L)
@@ -47,8 +48,13 @@ RandomBagClassifier <- function(obj,
                                 n_jobs=NULL,
                                 seed=123L,
                                 verbose=1L,
-                                backend=c("cpu", "gpu", "tpu"))
-{
+                                backend=c("cpu", "gpu", "tpu"), 
+                                venv_path = "./venv",
+                                ...) {
+  
+  # Lazy load sklearn only when needed
+  ns <- get_ns(venv_path)
+  
   backend <- match.arg(backend)
 
   ns$RandomBagClassifier(obj=obj,
@@ -87,7 +93,8 @@ RandomBagClassifier <- function(obj,
 #' n <- 20 ; p <- 5
 #' X <- matrix(rnorm(n * p), n, p) # no intercept!
 #' y <- rnorm(n)
-#'
+#' 
+#' sklearn <- nnetsauce::get_sklearn()
 #' obj <- sklearn$tree$DecisionTreeRegressor()
 #' obj2 <- RandomBagRegressor(obj)
 #' obj2$fit(X[1:12,], y[1:12])
@@ -110,8 +117,13 @@ RandomBagRegressor <- function(obj,
                                 n_jobs=NULL,
                                 seed=123L,
                                 verbose=1L,
-                                backend=c("cpu", "gpu", "tpu"))
-{
+                                backend=c("cpu", "gpu", "tpu"), 
+                               venv_path = "./venv",
+                               ...) {
+  
+  # Lazy load sklearn only when needed
+  ns <- get_ns(venv_path)
+  
   backend <- match.arg(backend)
 
   ns$RandomBagRegressor(obj=obj,

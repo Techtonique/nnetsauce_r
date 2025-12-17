@@ -13,6 +13,7 @@ LazyMTS(
   estimators = "all",
   preprocess = FALSE,
   show_progress = TRUE,
+  venv_path = "./venv",
   ...
 )
 }

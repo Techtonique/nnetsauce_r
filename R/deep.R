@@ -27,6 +27,7 @@
 #' X_test <- X[-index_train, ]
 #' y_test <- y[-index_train]
 #'
+#' sklearn <- nnetsauce::get_sklearn()
 #' obj2 <- sklearn$linear_model$LogisticRegressionCV()
 #'
 #' obj <- DeepClassifier(obj2, n_layers = 3L)
@@ -36,9 +37,13 @@
 #' print(mean(obj$predict(X_test)==y_test))
 #'
 DeepClassifier <- function(obj,
-                           n_layers = 3L,
-                           ...)
-{
+                           n_layers = 3L, 
+                           venv_path = "./venv",
+                           ...) {
+  
+  # Lazy load sklearn only when needed
+  ns <- get_ns(venv_path)
+  
   ns$DeepClassifier(obj,
     n_layers = n_layers,
     ...
@@ -72,6 +77,7 @@ DeepClassifier <- function(obj,
 #' X_test <- X[-index_train, ]
 #' y_test <- y[-index_train]
 #'
+#' sklearn <- nnetsauce::get_sklearn()
 #' obj2 <- sklearn$linear_model$ElasticNet()
 #'
 #' obj <- DeepRegressor(obj2, n_layers = 3L, n_clusters=2L)
@@ -80,9 +86,13 @@ DeepClassifier <- function(obj,
 #'
 #'
 DeepRegressor <- function(obj,
-                          n_layers = 3L,
-                          ...)
-{
+                          n_layers = 3L, 
+                          venv_path = "./venv",
+                          ...) {
+  
+  # Lazy load sklearn only when needed
+  ns <- get_ns(venv_path)
+  
   ns$DeepRegressor(obj,
     n_layers = n_layers,
     ...
@@ -107,7 +117,8 @@ DeepRegressor <- function(obj,
 #'
 #' set.seed(123)
 #' X <- matrix(rnorm(300), 100, 3)
-#'
+#' 
+#' sklearn <- nnetsauce::get_sklearn()
 #' obj <- sklearn$linear_model$ElasticNet()
 #' obj2 <- DeepMTS(obj)
 #'
@@ -133,9 +144,13 @@ DeepMTS <- function(obj,
                     agg="mean",
                     seed=123L,
                     backend=c("cpu", "gpu", "tpu"),
-                    verbose=0,
-                    ...)
-{
+                    verbose=0, 
+                    venv_path = "./venv",
+                    ...) {
+  
+  # Lazy load sklearn only when needed
+  ns <- get_ns(venv_path)
+  
   backend <- match.arg(backend)
 
   return(ns$DeepMTS(obj,

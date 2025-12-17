@@ -1,0 +1,92 @@
+---
+title: "Introduction to R package `nnetsauce`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Introduction to R package `nnetsauce`}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+## Install 
+
+See README. 
+
+## Examples
+
+### Classification
+
+```{r}
+library(nnetsauce)
+
+ set.seed(123)
+ X <- as.matrix(iris[, 1:4])
+ y <- as.integer(iris$Species) - 1L
+
+ (index_train <- base::sample.int(n = nrow(X),
+                                  size = floor(0.8*nrow(X)),
+                                  replace = FALSE))
+ X_train <- X[index_train, ]
+ y_train <- y[index_train]
+ X_test <- X[-index_train, ]
+ y_test <- y[-index_train]
+
+ obj <- nnetsauce::GLMClassifier(venv_path = "../venv")
+ obj$fit(X_train, y_train)
+ print(obj$score(X_test, y_test))
+```
+
+### Regression
+
+```{r}
+ library(datasets)
+
+ n <- 20 ; p <- 5
+ X <- matrix(rnorm(n * p), n, p) # no intercept!
+ y <- rnorm(n)
+ 
+ sklearn <- nnetsauce::get_sklearn(venv_path = "../venv")
+ obj <- sklearn$tree$DecisionTreeRegressor()
+ obj2 <- nnetsauce::RandomBagRegressor(obj, venv_path = "../venv")
+ obj2$fit(X[1:12,], y[1:12])
+ print(sqrt(mean((obj2$predict(X[13:20, ]) - y[13:20])**2)))
+```
+
+
+# AutoML
+
+### Regression
+
+```{r}
+X <- MASS::Boston[,-14] # dataset has an ethical problem
+y <- MASS::Boston$medv
+
+set.seed(13)
+(index_train <- base::sample.int(n = nrow(X),
+                                 size = floor(0.8*nrow(X)),
+                                 replace = FALSE))
+X_train <- X[index_train, ]
+y_train <- y[index_train]
+X_test <- X[-index_train, ]
+y_test <- y[-index_train]
+
+obj <- LazyRegressor(venv_path = "../venv")
+(res <- obj$fit(X_train, X_test, y_train, y_test))
+```
+
+### Time series
+
+```{r}
+set.seed(123)
+X <- matrix(rnorm(300), 100, 3)
+
+(index_train <- base::sample.int(n = nrow(X),
+                                 size = floor(0.8*nrow(X)),
+                                 replace = FALSE))
+X_train <- data.frame(X[index_train, ])
+X_test <- data.frame(X[-index_train, ])
+
+obj <- LazyMTS(venv_path = "../venv")
+
+(res <- obj$fit(X_train, X_test))
+```
+

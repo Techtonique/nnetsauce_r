@@ -22,7 +22,9 @@ MTS(
   agg = "mean",
   seed = 123L,
   backend = c("cpu", "gpu", "tpu"),
-  verbose = 0
+  verbose = 0,
+  venv_path = "./venv",
+  ...
 )
 }
 \description{

@@ -28,6 +28,7 @@
 #' y_test <- as.integer(iris[test_index, 5]) - 1L
 #'
 #' # ValueError: Sample weights must be 1D array or scalar
+#' # sklearn <- nnetsauce::get_sklearn()
 #' # obj <- sklearn$tree$DecisionTreeClassifier()
 #' # obj2 <- AdaBoostClassifier(obj)
 #' # obj2$fit(X_train, y_train)
@@ -54,8 +55,13 @@ AdaBoostClassifier <- function(obj,
                               seed=123L,
                               verbose=1,
                               method="SAMME",
-                              backend=c("cpu", "gpu", "tpu"))
-{
+                              backend=c("cpu", "gpu", "tpu"), 
+                              venv_path = "./venv",
+                              ...) {
+  
+  # Lazy load sklearn only when needed
+  ns <- get_ns(venv_path)
+    
   backend <- match.arg(backend)
 
   ns$AdaBoostClassifier(obj,

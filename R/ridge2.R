@@ -42,8 +42,18 @@ Ridge2Classifier <- function(n_hidden_features = 5L,
                              lambda1 = 0.1,
                              lambda2 = 0.1,
                              seed = 123L,
-                             backend=c("cpu", "gpu", "tpu"))
-{
+                             backend=c("cpu", "gpu", "tpu"), 
+                             venv_path = "./venv",
+                             ...) {
+  
+  # Use the specified virtual environment
+  reticulate::use_virtualenv(venv_path, 
+                             required = TRUE)
+  
+  # Lazy load sklearn only when needed
+  ns <- reticulate::import("nnetsauce", 
+                           delay_load = TRUE)
+  
   backend <- match.arg(backend)
 
   ns$Ridge2Classifier(
@@ -107,8 +117,13 @@ Ridge2MultitaskClassifier <- function(n_hidden_features=5L,
                                   lambda1=0.1,
                                   lambda2=0.1,
                                   seed=123L,
-                                  backend=c("cpu", "gpu", "tpu"))
-{
+                                  backend=c("cpu", "gpu", "tpu"), 
+                                  venv_path = "./venv",
+                                  ...) {
+  
+  # Lazy load sklearn only when needed
+  ns <- get_ns(venv_path)
+  
   backend <- match.arg(backend)
 
   ns$Ridge2MultitaskClassifier(n_hidden_features=n_hidden_features,
@@ -160,8 +175,13 @@ Ridge2Regressor <- function(n_hidden_features=5L,
                             lambda1=0.1,
                             lambda2=0.1,
                             seed=123L,
-                            backend=c("cpu", "gpu", "tpu"))
-{
+                            backend=c("cpu", "gpu", "tpu"), 
+                            venv_path = "./venv",
+                            ...) {
+  
+  # Lazy load sklearn only when needed
+  ns <- get_ns(venv_path)
+  
   backend <- match.arg(backend)
 
   ns$Ridge2Regressor(n_hidden_features=n_hidden_features,

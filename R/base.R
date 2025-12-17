@@ -46,8 +46,13 @@ BaseRegressor <- function(n_hidden_features=5L,
                           col_sample=1,
                           row_sample=1,
                           seed=123L,
-                          backend=c("cpu", "gpu", "tpu"))
-{
+                          backend=c("cpu", "gpu", "tpu"),
+                          venv_path = "./venv",
+                          ...) {
+  
+  # Lazy load sklearn only when needed
+  ns <- get_ns(venv_path)
+  
  backend <- match.arg(backend)
  # Create the regressor object
  ns$BaseRegressor(n_hidden_features=n_hidden_features,

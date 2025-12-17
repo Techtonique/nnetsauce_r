@@ -47,8 +47,13 @@ MTS <- function(obj,
                 agg="mean",
                 seed=123L,
                 backend=c("cpu", "gpu", "tpu"),
-                verbose=0)
-{
+                verbose=0, 
+                venv_path = "./venv",
+                ...) {
+  
+  # Lazy load sklearn only when needed
+  ns <- get_ns(venv_path)
+  
   backend <- match.arg(backend)
 
   return(ns$MTS(obj,

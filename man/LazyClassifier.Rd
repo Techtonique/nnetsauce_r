@@ -12,6 +12,7 @@ LazyClassifier(
   random_state = 42L,
   estimators = "all",
   preprocess = FALSE,
+  venv_path = "./venv",
   ...
 )
 }

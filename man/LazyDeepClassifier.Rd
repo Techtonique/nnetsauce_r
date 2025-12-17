@@ -13,6 +13,7 @@ LazyDeepClassifier(
   estimators = "all",
   preprocess = FALSE,
   n_layers = 3L,
+  venv_path = "./venv",
   ...
 )
 }

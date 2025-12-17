@@ -18,7 +18,9 @@ Ridge2Classifier(
   lambda1 = 0.1,
   lambda2 = 0.1,
   seed = 123L,
-  backend = c("cpu", "gpu", "tpu")
+  backend = c("cpu", "gpu", "tpu"),
+  venv_path = "./venv",
+  ...
 )
 }
 \description{

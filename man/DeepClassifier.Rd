@@ -4,7 +4,7 @@
 \alias{DeepClassifier}
 \title{Deep classification models}
 \usage{
-DeepClassifier(obj, n_layers = 3L, ...)
+DeepClassifier(obj, n_layers = 3L, venv_path = "./venv", ...)
 }
 \arguments{
 \item{obj}{a model object}

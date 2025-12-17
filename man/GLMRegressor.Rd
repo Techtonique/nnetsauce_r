@@ -22,7 +22,9 @@ GLMRegressor(
   type_clust = "kmeans",
   type_scaling = c("std", "std", "std"),
   optimizer = ns$Optimizer(),
-  seed = 123L
+  seed = 123L,
+  venv_path = "./venv",
+  ...
 )
 }
 \description{

@@ -42,9 +42,13 @@ BayesianRVFLRegressor <- function(n_hidden_features=5L,
                                   s=0.1,
                                   sigma=0.05,
                                   seed=123L,
-                                  backend=c("cpu", "gpu", "tpu")
-                                  )
-{
+                                  backend=c("cpu", "gpu", "tpu"), 
+                                  venv_path = "./venv",
+                                  ...) {
+  
+  # Lazy load sklearn only when needed
+  ns <- get_ns(venv_path)
+  
   backend <- match.arg(backend)
 
   ns$BayesianRVFLRegressor(n_hidden_features=n_hidden_features,
@@ -103,9 +107,13 @@ BayesianRVFL2Regressor <- function(n_hidden_features=5L,
                                    s2=0.1,
                                    sigma=0.05,
                                    seed=123L,
-                                   backend=c("cpu", "gpu", "tpu")
-                                   )
-{
+                                   backend=c("cpu", "gpu", "tpu"),
+                                   venv_path = "./venv",
+                                   ...) {
+  
+  # Lazy load sklearn only when needed
+  ns <- get_ns(venv_path)
+  
   backend <- match.arg(backend)
 
  ns$BayesianRVFL2Regressor(n_hidden_features=n_hidden_features,

@@ -24,7 +24,8 @@
 #' y_train <- y[index_train]
 #' X_test <- X[-index_train, ]
 #' y_test <- y[-index_train]
-#'
+#' 
+#' sklearn <- nnetsauce::get_sklearn()
 #' obj <- sklearn$tree$DecisionTreeClassifier()
 #' obj2 <- CustomClassifier(obj)
 #' obj2$fit(X_train, y_train)
@@ -44,8 +45,13 @@ CustomClassifier <- function(obj,
                              col_sample=1,
                              row_sample=1,
                              seed=123L,
-                             backend=c("cpu", "gpu", "tpu"))
-{
+                             backend=c("cpu", "gpu", "tpu"), 
+                             venv_path = "./venv",
+                             ...) {
+  
+  # Lazy load sklearn only when needed
+  ns <- get_ns(venv_path)
+  
   backend <- match.arg(backend)
 
   ns$CustomClassifier(obj,
@@ -90,7 +96,8 @@ CustomClassifier <- function(obj,
 #' y_train <- y[index_train]
 #' X_test <- X[-index_train, ]
 #' y_test <- y[-index_train]
-#'
+#'  
+#' sklearn <- nnetsauce::get_sklearn()
 #' obj <- sklearn$linear_model$ElasticNet()
 #' obj2 <- CustomRegressor(obj)
 #' obj2$fit(X_train, y_train)
@@ -110,8 +117,13 @@ CustomRegressor <- function(obj,
                              col_sample=1,
                              row_sample=1,
                              seed=123L,
-                             backend=c("cpu", "gpu", "tpu"))
-{
+                             backend=c("cpu", "gpu", "tpu"), 
+                             venv_path = "./venv",
+                             ...) {
+  
+  # Lazy load sklearn only when needed
+  ns <- get_ns(venv_path)
+  
   backend <- match.arg(backend)
 
   ns$CustomRegressor(obj,

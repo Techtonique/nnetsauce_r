@@ -4,7 +4,7 @@
 \alias{DeepRegressor}
 \title{Deep regression models}
 \usage{
-DeepRegressor(obj, n_layers = 3L, ...)
+DeepRegressor(obj, n_layers = 3L, venv_path = "./venv", ...)
 }
 \arguments{
 \item{obj}{a model object}

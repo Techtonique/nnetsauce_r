@@ -42,9 +42,18 @@ LazyClassifier <- function(verbose = 0,
                            predictions = FALSE,
                            random_state = 42L,
                            estimators = "all",
-                           preprocess = FALSE,
-                           ...)
-{
+                           preprocess = FALSE, 
+                           venv_path = "./venv",
+                           ...) {
+  
+  # Use the specified virtual environment
+  reticulate::use_virtualenv(venv_path, 
+                             required = TRUE)
+  
+  # Lazy load sklearn only when needed
+  ns <- reticulate::import("nnetsauce", 
+                           delay_load = TRUE)
+  
   ns$LazyClassifier(
     verbose = verbose,
     ignore_warnings = ignore_warnings,
@@ -101,9 +110,18 @@ LazyDeepClassifier <- function(verbose = 0,
                            random_state = 42L,
                            estimators = "all",
                            preprocess = FALSE,
-                           n_layers = 3L,
-                           ...)
-{
+                           n_layers = 3L, 
+                           venv_path = "./venv",
+                           ...) {
+  
+  # Use the specified virtual environment
+  reticulate::use_virtualenv(venv_path, 
+                             required = TRUE)
+  
+  # Lazy load sklearn only when needed
+  ns <- reticulate::import("nnetsauce", 
+                           delay_load = TRUE)
+  
   ns$LazyDeepClassifier(
     verbose = verbose,
     ignore_warnings = ignore_warnings,
@@ -160,9 +178,13 @@ LazyRegressor <- function(verbose = 0,
                           predictions = FALSE,
                           random_state = 42L,
                           estimators = "all",
-                          preprocess = FALSE,
-                          ...)
-{
+                          preprocess = FALSE, 
+                          venv_path = "./venv",
+                          ...) {
+  
+  # Lazy load sklearn only when needed
+  ns <- get_ns(venv_path)
+  
   ns$LazyRegressor(
     verbose = verbose,
     ignore_warnings = ignore_warnings,
@@ -218,9 +240,13 @@ LazyDeepRegressor <- function(verbose = 0,
                           random_state = 42L,
                           estimators = "all",
                           preprocess = FALSE,
-                          n_layers = 3L,
-                          ...)
-{
+                          n_layers = 3L, 
+                          venv_path = "./venv",
+                          ...) {
+  
+  # Lazy load sklearn only when needed
+  ns <- get_ns(venv_path)
+  
   ns$LazyDeepRegressor(
     verbose = verbose,
     ignore_warnings = ignore_warnings,
@@ -275,9 +301,13 @@ LazyMTS <- function(verbose = 0,
                     random_state = 42L,
                     estimators = "all",
                     preprocess = FALSE,
-                    show_progress=TRUE,
-                    ...)
-{
+                    show_progress=TRUE, 
+                    venv_path = "./venv",
+                    ...) {
+  
+  # Lazy load sklearn only when needed
+  ns <- get_ns(venv_path)
+  
   ns$LazyMTS(
     verbose = verbose,
     ignore_warnings = ignore_warnings,
@@ -332,9 +362,13 @@ LazyDeepMTS <- function(verbose = 0,
                     estimators = "all",
                     preprocess = FALSE,
                     show_progress=TRUE,
-                    n_layers = 3L,
-                    ...)
-{
+                    n_layers = 3L, 
+                    venv_path = "./venv",
+                    ...) {
+  
+  # Lazy load sklearn only when needed
+  ns <- get_ns(venv_path)
+  
   ns$LazyDeepMTS(
     verbose = verbose,
     ignore_warnings = ignore_warnings,

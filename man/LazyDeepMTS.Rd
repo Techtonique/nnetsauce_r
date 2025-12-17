@@ -14,6 +14,7 @@ LazyDeepMTS(
   preprocess = FALSE,
   show_progress = TRUE,
   n_layers = 3L,
+  venv_path = "./venv",
   ...
 )
 }

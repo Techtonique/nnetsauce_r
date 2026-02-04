@@ -43,6 +43,7 @@ See also https://techtonique.github.io/nnetsauce/
 set.seed(123)
 X <- matrix(rnorm(300), 100, 3)
 
+sklearn <- nnetsauce::get_sklearn()
 obj <- sklearn$linear_model$ElasticNet()
 obj2 <- DeepMTS(obj)
 

@@ -43,6 +43,7 @@ y_train <- y[index_train]
 X_test <- X[-index_train, ]
 y_test <- y[-index_train]
 
+sklearn <- nnetsauce::get_sklearn()
 obj <- sklearn$tree$DecisionTreeClassifier()
 obj2 <- CustomClassifier(obj)
 obj2$fit(X_train, y_train)

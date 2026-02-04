@@ -32,6 +32,7 @@ y_train <- y[index_train]
 X_test <- X[-index_train, ]
 y_test <- y[-index_train]
 
+sklearn <- nnetsauce::get_sklearn()
 obj2 <- sklearn$linear_model$LogisticRegressionCV()
 
 obj <- DeepClassifier(obj2, n_layers = 3L)

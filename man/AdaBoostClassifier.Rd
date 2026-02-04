@@ -53,6 +53,7 @@ X_test <- as.matrix(iris[test_index, 1:4])
 y_test <- as.integer(iris[test_index, 5]) - 1L
 
 # ValueError: Sample weights must be 1D array or scalar
+# sklearn <- nnetsauce::get_sklearn()
 # obj <- sklearn$tree$DecisionTreeClassifier()
 # obj2 <- AdaBoostClassifier(obj)
 # obj2$fit(X_train, y_train)

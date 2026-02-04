@@ -45,6 +45,7 @@ y_train <- y[index_train]
 X_test <- X[-index_train, ]
 y_test <- y[-index_train]
 
+sklearn <- nnetsauce::get_sklearn()
 obj <- sklearn$tree$DecisionTreeClassifier()
 obj2 <- RandomBagClassifier(obj, n_estimators=50L,
 n_hidden_features=5L)

@@ -1,0 +1,46 @@
+#' Model-agnostic quantile regressor
+#'
+#' @param obj A model object
+#' @param level The quantile level
+#' @param scoring The scoring function ("predictions", "residuals", "conformal", "studentized", "conformal-studentized")
+#' @param venv_path The path to the virtual environment
+#' @param ... Additional arguments
+#'
+#' @return
+#' @export
+#'
+#' @examples
+#'
+#' library(datasets)
+#'
+#' X <- as.matrix(mtcars[, -1])
+#' y <- mtcars[, 1]
+#'
+#' n <- dim(X)[1]
+#' p <- dim(X)[2]
+#'
+#' set.seed(213)
+#' train_index <- sample(x = 1:n, size = floor(0.8*n), replace = TRUE)
+#' test_index <- -train_index
+#'
+#' X_train <- as.matrix(mtcars[train_index, -1])
+#' y_train <- mtcars[train_index, 1]
+#' X_test <- as.matrix(mtcars[test_index, -1])
+#' y_test <- mtcars[test_index, 1]
+#'
+#' sklearn <- nnetsauce::get_sklearn()
+#' obj <- sklearn$ensemble$RandomForestRegressor(random_state=42L)
+#' obj2 <- QuantileRegressor(obj)
+#' obj2$fit(X_train, y_train)
+#' print(obj2$score(X_test, y_test))
+#'
+QuantileRegressor <- function(obj,
+                              level = 95,
+                              scoring = "predictions",
+                              venv_path = "./venv",
+                              ...) {
+  # Lazy load sklearn only when needed
+  ns <- get_ns(venv_path)
+  
+  ns$QuantileRegressor(obj, level, scoring)
+}

@@ -38,6 +38,7 @@ n <- 20 ; p <- 5
 X <- matrix(rnorm(n * p), n, p) # no intercept!
 y <- rnorm(n)
 
+sklearn <- nnetsauce::get_sklearn()
 obj <- sklearn$tree$DecisionTreeRegressor()
 obj2 <- RandomBagRegressor(obj)
 obj2$fit(X[1:12,], y[1:12])

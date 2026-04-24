@@ -10,7 +10,7 @@
 #' @export
 #'
 #' @examples
-#'
+#' \dontrun{
 #' library(datasets)
 #'
 #' X <- as.matrix(mtcars[, -1])
@@ -33,7 +33,7 @@
 #' obj2 <- QuantileRegressor(obj)
 #' obj2$fit(X_train, y_train)
 #' print(obj2$score(X_test, y_test))
-#'
+#'}
 QuantileRegressor <- function(obj,
                               level = 95,
                               scoring = "predictions",

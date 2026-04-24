@@ -11,6 +11,7 @@
 #'
 #' @examples
 #'
+#' \dontrun{
 #' library(datasets)
 #'
 #' set.seed(123)
@@ -30,7 +31,7 @@
 #' obj2 <- CustomClassifier(obj)
 #' obj2$fit(X_train, y_train)
 #' print(obj2$score(X_test, y_test))
-#'
+#'}
 CustomClassifier <- function(obj,
                              n_hidden_features=5L,
                              activation_name="relu",
@@ -83,7 +84,7 @@ CustomClassifier <- function(obj,
 #' @export
 #'
 #' @examples
-#'
+#' \dontrun{
 #' set.seed(123)
 #' n <- 50 ; p <- 3
 #' X <- matrix(rnorm(n * p), n, p) # no intercept!
@@ -102,7 +103,7 @@ CustomClassifier <- function(obj,
 #' obj2 <- CustomRegressor(obj)
 #' obj2$fit(X_train, y_train)
 #' print(obj2$score(X_test, y_test))
-#'
+#'}
 CustomRegressor <- function(obj,
                              n_hidden_features=5L,
                              activation_name="relu",

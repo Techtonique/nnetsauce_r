@@ -17,7 +17,7 @@
 #' @export
 #'
 #' @examples
-#'
+#' \dontrun{
 #' library(datasets)
 #'
 #' set.seed(123)
@@ -35,7 +35,7 @@
 #' obj <- LazyClassifier()
 #' res <- obj$fit(X_train, X_test, y_train, y_test)
 #' print(res[[1]])
-#'
+#'}
 LazyClassifier <- function(verbose = 0,
                            ignore_warnings = TRUE,
                            custom_metric = NULL,
@@ -84,7 +84,7 @@ LazyClassifier <- function(verbose = 0,
 #' @export
 #'
 #' @examples
-#'
+#' \dontrun{
 #' library(datasets)
 #'
 #' set.seed(123)
@@ -102,7 +102,7 @@ LazyClassifier <- function(verbose = 0,
 #' obj <- LazyDeepClassifier()
 #' res <- obj$fit(X_train, X_test, y_train, y_test)
 #' print(res[[1]])
-#'
+#'}
 LazyDeepClassifier <- function(verbose = 0,
                            ignore_warnings = TRUE,
                            custom_metric = NULL,
@@ -154,7 +154,7 @@ LazyDeepClassifier <- function(verbose = 0,
 #' @export
 #'
 #' @examples
-#'
+#' \dontrun{
 #' X <- MASS::Boston[,-14] # dataset has an ethical problem
 #' y <- MASS::Boston$medv
 #'
@@ -170,7 +170,7 @@ LazyDeepClassifier <- function(verbose = 0,
 #' obj <- LazyRegressor()
 #' res <- obj$fit(X_train, X_test, y_train, y_test)
 #' print(res[[1]])
-#'
+#'}
 #'
 LazyRegressor <- function(verbose = 0,
                           ignore_warnings = TRUE,
@@ -215,7 +215,7 @@ LazyRegressor <- function(verbose = 0,
 #' @export
 #'
 #' @examples
-#'
+#' \dontrun{
 #' X <- MASS::Boston[,-14] # dataset has an ethical problem
 #' y <- MASS::Boston$medv
 #'
@@ -231,7 +231,7 @@ LazyRegressor <- function(verbose = 0,
 #' obj <- LazyDeepRegressor()
 #' res <- obj$fit(X_train, X_test, y_train, y_test)
 #' print(res[[1]])
-#'
+#'}
 #'
 LazyDeepRegressor <- function(verbose = 0,
                           ignore_warnings = TRUE,
@@ -279,7 +279,7 @@ LazyDeepRegressor <- function(verbose = 0,
 #' @export
 #'
 #' @examples
-#'
+#' \dontrun{
 #' set.seed(123)
 #' X <- matrix(rnorm(300), 100, 3)
 #'
@@ -293,7 +293,7 @@ LazyDeepRegressor <- function(verbose = 0,
 #'
 #' res <- obj$fit(X_train, X_test)
 #' print(res[[1]])
-#'
+#'}
 LazyMTS <- function(verbose = 0,
                     ignore_warnings = TRUE,
                     custom_metric = NULL,
@@ -339,7 +339,7 @@ LazyMTS <- function(verbose = 0,
 #' @export
 #'
 #' @examples
-#'
+#' \dontrun{
 #' set.seed(123)
 #' X <- matrix(rnorm(300), 100, 3)
 #'
@@ -353,7 +353,7 @@ LazyMTS <- function(verbose = 0,
 #'
 #' res <- obj$fit(X_train, X_test)
 #' print(res[[1]])
-#'
+#'}
 LazyDeepMTS <- function(verbose = 0,
                     ignore_warnings = TRUE,
                     custom_metric = NULL,

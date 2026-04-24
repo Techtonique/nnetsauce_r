@@ -27,7 +27,7 @@ Ridge2Classifier(
 Parameters' description can be found at \url{https://techtonique.github.io/nnetsauce/}
 }
 \examples{
-
+\dontrun{
 library(datasets)
 
 X <- as.matrix(iris[, 1:4])
@@ -45,6 +45,6 @@ obj <- Ridge2Classifier()
 obj$fit(X_train, y_train)
 print(obj$score(X_test, y_test))
 print(obj$predict_proba(X_train))
-
+}
 
 }

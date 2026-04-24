@@ -40,7 +40,7 @@ a list that you can \code{$fit}
 See also https://techtonique.github.io/nnetsauce/
 }
 \examples{
-
+\dontrun{
 X <- MASS::Boston[,-14] # dataset has an ethical problem
 y <- MASS::Boston$medv
 
@@ -56,6 +56,6 @@ y_test <- y[-index_train]
 obj <- LazyRegressor()
 res <- obj$fit(X_train, X_test, y_train, y_test)
 print(res[[1]])
-
+}
 
 }

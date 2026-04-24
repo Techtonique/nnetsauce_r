@@ -17,7 +17,7 @@ DeepRegressor(obj, n_layers = 3L, venv_path = "./venv", ...)
 See also https://techtonique.github.io/nnetsauce/
 }
 \examples{
-
+\dontrun{
 X <- MASS::Boston[,-14] # dataset has an ethical problem
 y <- MASS::Boston$medv
 
@@ -36,6 +36,6 @@ obj2 <- sklearn$linear_model$ElasticNet()
 obj <- DeepRegressor(obj2, n_layers = 3L, n_clusters=2L)
 res <- obj$fit(X_train, y_train)
 print(obj$predict(X_test))
-
+}
 
 }

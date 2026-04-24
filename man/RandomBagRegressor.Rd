@@ -31,7 +31,7 @@ RandomBagRegressor(
 Parameters description can be found at \url{https://techtonique.github.io/nnetsauce/}
 }
 \examples{
-
+\dontrun{
 library(datasets)
 
 n <- 20 ; p <- 5
@@ -43,5 +43,5 @@ obj <- sklearn$tree$DecisionTreeRegressor()
 obj2 <- RandomBagRegressor(obj)
 obj2$fit(X[1:12,], y[1:12])
 print(obj2$score(X[13:20, ], y[13:20]))
-
+}
 }

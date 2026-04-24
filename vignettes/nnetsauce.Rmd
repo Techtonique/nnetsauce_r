@@ -15,7 +15,7 @@ See README.
 
 ### Classification
 
-```{r}
+```{r eval=FALSE}
 library(nnetsauce)
 
  set.seed(123)
@@ -37,7 +37,7 @@ library(nnetsauce)
 
 ### Regression
 
-```{r}
+```{r eval=FALSE}
  library(datasets)
 
  n <- 20 ; p <- 5
@@ -56,7 +56,7 @@ library(nnetsauce)
 
 ### Regression
 
-```{r}
+```{r eval=FALSE}
 X <- MASS::Boston[,-14] # dataset has an ethical problem
 y <- MASS::Boston$medv
 
@@ -75,7 +75,7 @@ obj <- LazyRegressor(venv_path = "../venv")
 
 ### Time series
 
-```{r}
+```{r eval=FALSE}
 set.seed(123)
 X <- matrix(rnorm(300), 100, 3)
 

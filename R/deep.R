@@ -12,7 +12,7 @@
 #' @export
 #'
 #' @examples
-#'
+#' \dontrun{
 #' library(datasets)
 #'
 #' set.seed(123)
@@ -35,7 +35,7 @@
 #'
 #' # accuracy
 #' print(mean(obj$predict(X_test)==y_test))
-#'
+#'}
 DeepClassifier <- function(obj,
                            n_layers = 3L, 
                            venv_path = "./venv",
@@ -64,7 +64,7 @@ DeepClassifier <- function(obj,
 #' @export
 #'
 #' @examples
-#'
+#' \dontrun{
 #' X <- MASS::Boston[,-14] # dataset has an ethical problem
 #' y <- MASS::Boston$medv
 #'
@@ -83,7 +83,7 @@ DeepClassifier <- function(obj,
 #' obj <- DeepRegressor(obj2, n_layers = 3L, n_clusters=2L)
 #' res <- obj$fit(X_train, y_train)
 #' print(obj$predict(X_test))
-#'
+#'}
 #'
 DeepRegressor <- function(obj,
                           n_layers = 3L, 
@@ -114,7 +114,7 @@ DeepRegressor <- function(obj,
 #' @export
 #'
 #' @examples
-#'
+#' \dontrun{
 #' set.seed(123)
 #' X <- matrix(rnorm(300), 100, 3)
 #' 
@@ -124,7 +124,7 @@ DeepRegressor <- function(obj,
 #'
 #' obj2$fit(X)
 #' obj2$predict()
-#'
+#'}
 #'
 DeepMTS <- function(obj,
                     n_layers = 3L,

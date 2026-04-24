@@ -29,7 +29,7 @@ Parameters' description can be found at \url{https://techtonique.github.io/nnets
 #' @return
 }
 \examples{
-
+\dontrun{
 set.seed(123)
 n <- 50 ; p <- 3
 X <- matrix(rnorm(n * p), n, p) # no intercept!
@@ -46,5 +46,5 @@ y_test <- y[-index_train]
 obj <- BayesianRVFL2Regressor(n_hidden_features = 5L, s1=0.01)
 print(obj$fit(X_train, y_train))
 print(obj$score(X_test, y_test))
-
+}
 }

@@ -73,7 +73,7 @@ y_test <- y[-index_train]
 
 obj <- LazyRegressor(venv_path = "./venv")
 res <- obj$fit(X_train, X_test, y_train, y_test)
-print(res[[1]])
+print(res)
 ```
 
 ### Time series 
@@ -91,5 +91,5 @@ X_test <- data.frame(X[-index_train, ])
 obj <- LazyMTS(venv_path = "./venv")
 
 res <- obj$fit(X_train, X_test)
-print(res[[1]])
+print(res)
 ```

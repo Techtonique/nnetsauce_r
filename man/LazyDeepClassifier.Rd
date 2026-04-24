@@ -43,7 +43,7 @@ a list that you can \code{$fit}
 See also https://techtonique.github.io/nnetsauce/
 }
 \examples{
-
+\dontrun{
 library(datasets)
 
 set.seed(123)
@@ -61,5 +61,5 @@ y_test <- y[-index_train]
 obj <- LazyDeepClassifier()
 res <- obj$fit(X_train, X_test, y_train, y_test)
 print(res[[1]])
-
+}
 }

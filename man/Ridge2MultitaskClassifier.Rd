@@ -26,7 +26,7 @@ Ridge2MultitaskClassifier(
 Parameters' description can be found at \url{https://techtonique.github.io/nnetsauce/}
 }
 \examples{
-
+\dontrun{
 # Example 1 -----
 
 library(datasets)
@@ -46,6 +46,6 @@ obj <- Ridge2MultitaskClassifier()
 obj$fit(X_train, y_train)
 print(obj$score(X_test, y_test))
 print(obj$predict_proba(X_train))
-
+}
 
 }

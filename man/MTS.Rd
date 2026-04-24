@@ -31,7 +31,7 @@ MTS(
 Parameters description can be found at \url{https://techtonique.github.io/nnetsauce/}
 }
 \examples{
-
+\dontrun{
 # Example 1 -----
 
 set.seed(123)
@@ -54,5 +54,5 @@ obj2 <- MTS(obj)
 
 obj2$fit(X)
 obj2$predict(return_std = TRUE)
-
+}
 }

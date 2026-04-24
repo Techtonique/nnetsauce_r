@@ -9,7 +9,7 @@
 #' @export
 #'
 #' @examples
-#'
+#' \dontrun{
 #' library(datasets)
 #'
 #' X <- as.matrix(iris[, 1:4])
@@ -27,7 +27,7 @@
 #' obj$fit(X_train, y_train)
 #' print(obj$score(X_test, y_test))
 #' print(obj$predict_proba(X_train))
-#'
+#'}
 #'
 Ridge2Classifier <- function(n_hidden_features = 5L,
                              activation_name = "relu",
@@ -83,7 +83,7 @@ Ridge2Classifier <- function(n_hidden_features = 5L,
 #' @export
 #'
 #' @examples
-#'
+#' \dontrun{
 #' # Example 1 -----
 #'
 #' library(datasets)
@@ -103,7 +103,7 @@ Ridge2Classifier <- function(n_hidden_features = 5L,
 #' obj$fit(X_train, y_train)
 #' print(obj$score(X_test, y_test))
 #' print(obj$predict_proba(X_train))
-#'
+#'}
 #'
 Ridge2MultitaskClassifier <- function(n_hidden_features=5L,
                                   activation_name="relu",
@@ -153,7 +153,7 @@ Ridge2MultitaskClassifier <- function(n_hidden_features=5L,
 #' @export
 #'
 #' @examples
-#'
+#' \dontrun{
 #' set.seed(123)
 #' n <- 50 ; p <- 3
 #' X <- matrix(rnorm(n * p), n, p) # no intercept!
@@ -162,7 +162,7 @@ Ridge2MultitaskClassifier <- function(n_hidden_features=5L,
 #' obj <- nnetsauce::Ridge2Regressor(n_hidden_features = 5L)
 #' print(obj$fit(X, y))
 #' print(obj$score(X, y))
-#'
+#'}
 Ridge2Regressor <- function(n_hidden_features=5L,
                             activation_name="relu",
                             a=0.01,

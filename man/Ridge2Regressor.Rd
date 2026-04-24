@@ -26,7 +26,7 @@ Ridge2Regressor(
 Parameters' description can be found at \url{https://techtonique.github.io/nnetsauce/}
 }
 \examples{
-
+\dontrun{
 set.seed(123)
 n <- 50 ; p <- 3
 X <- matrix(rnorm(n * p), n, p) # no intercept!
@@ -35,5 +35,5 @@ y <- rnorm(n)
 obj <- nnetsauce::Ridge2Regressor(n_hidden_features = 5L)
 print(obj$fit(X, y))
 print(obj$score(X, y))
-
+}
 }

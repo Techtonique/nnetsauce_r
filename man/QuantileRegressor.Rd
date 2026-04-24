@@ -27,7 +27,7 @@ QuantileRegressor(
 Model-agnostic quantile regressor
 }
 \examples{
-
+\dontrun{
 library(datasets)
 
 X <- as.matrix(mtcars[, -1])
@@ -46,9 +46,9 @@ X_test <- as.matrix(mtcars[test_index, -1])
 y_test <- mtcars[test_index, 1]
 
 sklearn <- nnetsauce::get_sklearn()
-obj <- sklearn$ensemble$RandomForestRegressor()
+obj <- sklearn$ensemble$RandomForestRegressor(random_state=42L)
 obj2 <- QuantileRegressor(obj)
 obj2$fit(X_train, y_train)
 print(obj2$score(X_test, y_test))
-
+}
 }

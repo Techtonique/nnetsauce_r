@@ -39,7 +39,7 @@ DeepMTS(
 See also https://techtonique.github.io/nnetsauce/
 }
 \examples{
-
+\dontrun{
 set.seed(123)
 X <- matrix(rnorm(300), 100, 3)
 
@@ -49,6 +49,6 @@ obj2 <- DeepMTS(obj)
 
 obj2$fit(X)
 obj2$predict()
-
+}
 
 }

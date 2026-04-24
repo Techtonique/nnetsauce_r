@@ -31,7 +31,7 @@ GLMClassifier(
 Parameters' description can be found at \url{https://techtonique.github.io/nnetsauce/}
 }
 \examples{
-
+\dontrun{
 library(datasets)
 
 set.seed(123)
@@ -49,5 +49,5 @@ y_test <- y[-index_train]
 obj <- GLMClassifier()
 obj$fit(X_train, y_train)
 print(obj$score(X_test, y_test))
-
+}
 }

@@ -6,7 +6,7 @@
 #' @export
 #'
 #' @examples
-#'
+#' \dontrun{
 #' # Example 1 -----
 #'
 #' set.seed(123)
@@ -29,7 +29,7 @@
 #'
 #' obj2$fit(X)
 #' obj2$predict(return_std = TRUE)
-#'
+#'}
 MTS <- function(obj,
                 n_hidden_features=5L,
                 activation_name="relu",

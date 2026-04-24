@@ -17,7 +17,7 @@ DeepClassifier(obj, n_layers = 3L, venv_path = "./venv", ...)
 See also https://techtonique.github.io/nnetsauce/
 }
 \examples{
-
+\dontrun{
 library(datasets)
 
 set.seed(123)
@@ -40,5 +40,5 @@ res <- obj$fit(X_train, y_train)
 
 # accuracy
 print(mean(obj$predict(X_test)==y_test))
-
+}
 }

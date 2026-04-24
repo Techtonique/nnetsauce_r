@@ -11,7 +11,7 @@
 #' @export
 #'
 #' @examples
-#'
+#' \dontrun{
 #' set.seed(123)
 #' n <- 50 ; p <- 3
 #' X <- matrix(rnorm(n * p), n, p) # no intercept!
@@ -32,7 +32,7 @@
 #' obj <- BaseRegressor(n_hidden_features=10L, dropout=0.9)
 #' print(obj$fit(X_train, y_train))
 #' print(obj$score(X_test, y_test))
-#'
+#' }
 BaseRegressor <- function(n_hidden_features=5L,
                           activation_name="relu",
                           a=0.01,

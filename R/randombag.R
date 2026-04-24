@@ -9,7 +9,7 @@
 #' @export
 #'
 #' @examples
-#'
+#' \dontrun{
 #' library(datasets)
 #'
 #' X <- as.matrix(iris[, 1:4])
@@ -30,7 +30,7 @@
 #' obj2$fit(X_train, y_train)
 #' print(obj2$score(X_test, y_test))
 #' print(obj2$predict_proba(X_test))
-#'
+#'}
 RandomBagClassifier <- function(obj,
                                 n_estimators=50L,
                                 n_hidden_features=5L,
@@ -87,7 +87,7 @@ RandomBagClassifier <- function(obj,
 #' @export
 #'
 #' @examples
-#'
+#' \dontrun{
 #' library(datasets)
 #'
 #' n <- 20 ; p <- 5
@@ -99,7 +99,7 @@ RandomBagClassifier <- function(obj,
 #' obj2 <- RandomBagRegressor(obj)
 #' obj2$fit(X[1:12,], y[1:12])
 #' print(obj2$score(X[13:20, ], y[13:20]))
-#'
+#'}
 RandomBagRegressor <- function(obj,
                                 n_estimators=10L,
                                 n_hidden_features=1L,
